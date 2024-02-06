@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://ir1jx0rbgdnr"
-path="res://.godot/imported/grounds.png-d36057dfbf5fb663a285b41d1d604cba.ctex"
+uid="uid://c3slqm68eafop"
+path="res://.godot/imported/gronuds.png-bd7fbab84a4565817b13aa46995f997a.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://tile_sets/grounds.png"
-dest_files=["res://.godot/imported/grounds.png-d36057dfbf5fb663a285b41d1d604cba.ctex"]
+source_file="res://tile_sets/gronuds.png"
+dest_files=["res://.godot/imported/gronuds.png-bd7fbab84a4565817b13aa46995f997a.ctex"]
 
 [params]
 
