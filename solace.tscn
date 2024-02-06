@@ -1,114 +1,9 @@
-[gd_scene load_steps=20 format=3 uid="uid://bd2qkb1x7iclb"]
+[gd_scene load_steps=9 format=3 uid="uid://bd2qkb1x7iclb"]
 
-[ext_resource type="Script" path="res://characters/Character1.gd" id="1_5ol4i"]
 [ext_resource type="Texture2D" uid="uid://ir1jx0rbgdnr" path="res://tile_sets/grounds.png" id="1_fjh5y"]
-[ext_resource type="Texture2D" uid="uid://bwphge16iq4c" path="res://characters/character_sprite.png" id="1_lftnd"]
 [ext_resource type="Texture2D" uid="uid://btyshwujtjvgs" path="res://tile_sets/forest.png" id="2_ty2ct"]
 [ext_resource type="Texture2D" uid="uid://bkuvqmdm64dk8" path="res://tile_sets/grass.png" id="3_18xhq"]
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_6fqxy"]
-size = Vector2(3, 1.33334)
-
-[sub_resource type="Animation" id="Animation_and3d"]
-resource_name = "walk_right"
-length = 0.4
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Sprite2D:frame")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.2),
-"transitions": PackedFloat32Array(1, 1),
-"update": 1,
-"values": [3, 7]
-}
-
-[sub_resource type="Animation" id="Animation_r4na2"]
-length = 0.001
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Sprite2D:frame")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [3]
-}
-
-[sub_resource type="Animation" id="Animation_vh5ii"]
-resource_name = "walk_left"
-length = 0.4
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Sprite2D:frame")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.2),
-"transitions": PackedFloat32Array(1, 1),
-"update": 1,
-"values": [2, 6]
-}
-
-[sub_resource type="Animation" id="Animation_8kxog"]
-resource_name = "walk_up"
-length = 0.4
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Sprite2D:frame")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.2),
-"transitions": PackedFloat32Array(1, 1),
-"update": 1,
-"values": [1, 5]
-}
-
-[sub_resource type="Animation" id="Animation_8mh2b"]
-resource_name = "walk_down"
-length = 0.4
-loop_mode = 1
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Sprite2D:frame")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.2),
-"transitions": PackedFloat32Array(1, 1),
-"update": 1,
-"values": [0, 4]
-}
-
-[sub_resource type="AnimationLibrary" id="AnimationLibrary_ht31u"]
-_data = {
-"RESET": SubResource("Animation_r4na2"),
-"walk_down": SubResource("Animation_8mh2b"),
-"walk_left": SubResource("Animation_vh5ii"),
-"walk_right": SubResource("Animation_and3d"),
-"walk_up": SubResource("Animation_8kxog")
-}
-
-[sub_resource type="AnimationNodeBlendSpace2D" id="AnimationNodeBlendSpace2D_pvcco"]
-min_space = Vector2(-1, -1.1)
-max_space = Vector2(1, 1.1)
-
-[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_w6joo"]
-advance_mode = 2
-
-[sub_resource type="AnimationNodeStateMachine" id="AnimationNodeStateMachine_48q4k"]
-states/Move/node = SubResource("AnimationNodeBlendSpace2D_pvcco")
-states/Move/position = Vector2(517.25, 94)
-transitions = ["Start", "Move", SubResource("AnimationNodeStateMachineTransition_w6joo")]
+[ext_resource type="PackedScene" uid="uid://bwjh30l734fb1" path="res://player.tscn" id="6_twvs8"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_1u5r6"]
 texture = ExtResource("1_fjh5y")
@@ -420,31 +315,8 @@ sources/2 = SubResource("TileSetAtlasSource_7w4ks")
 [node name="Slouismo Fen Entrance" type="Node2D"]
 y_sort_enabled = true
 
-[node name="Character1" type="CharacterBody2D" parent="."]
-script = ExtResource("1_5ol4i")
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Character1"]
-position = Vector2(89.5, 84)
-scale = Vector2(3, 3)
-shape = SubResource("RectangleShape2D_6fqxy")
-debug_color = Color(0, 0.6, 0.701961, 0.419608)
-
-[node name="Sprite2D" type="Sprite2D" parent="Character1"]
-top_level = true
-position = Vector2(88.5, 80.5)
-texture = ExtResource("1_lftnd")
-hframes = 4
-vframes = 4
-frame = 3
-
-[node name="AnimationPlayer" type="AnimationPlayer" parent="Character1"]
-libraries = {
-"": SubResource("AnimationLibrary_ht31u")
-}
-
-[node name="AnimationTree" type="AnimationTree" parent="Character1"]
-tree_root = SubResource("AnimationNodeStateMachine_48q4k")
-parameters/Move/blend_position = Vector2(-0.000982344, -0.00288713)
+[node name="Player" parent="." instance=ExtResource("6_twvs8")]
+position = Vector2(4, 293)
 
 [node name="TileMap" type="TileMap" parent="."]
 y_sort_enabled = true
