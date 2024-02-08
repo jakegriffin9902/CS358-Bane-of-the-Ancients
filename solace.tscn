@@ -316,7 +316,11 @@ sources/2 = SubResource("TileSetAtlasSource_7w4ks")
 y_sort_enabled = true
 
 [node name="Player" parent="." instance=ExtResource("6_twvs8")]
-position = Vector2(4, 293)
+position = Vector2(9, 293)
+starting_direction = Vector2(1, 1)
+
+[node name="RemoteTransform2D" type="RemoteTransform2D" parent="Player"]
+remote_path = NodePath("../../Camera2D")
 
 [node name="TileMap" type="TileMap" parent="."]
 y_sort_enabled = true
@@ -347,3 +351,11 @@ layer_6/name = "trees"
 layer_6/y_sort_enabled = true
 layer_6/tile_data = PackedInt32Array(458775, 1, 0, 524311, 1, 1, 786456, 1, 0, 851992, 1, 1, 655381, 65537, 0, 720917, 65537, 1, 655382, 131073, 0, 720918, 131073, 1, 22, 65537, 0, 65558, 65537, 1, 23, 131073, 0, 65559, 131073, 1, 7, 65537, 0, 65543, 65537, 1, 8, 131073, 0, 65544, 131073, 1, 327693, 65537, 0, 393229, 65537, 1, 327694, 131073, 0, 393230, 131073, 1, 1179659, 65537, 0, 1245195, 65537, 1, 1179660, 131073, 0, 1245196, 131073, 1, 851969, 1, 0, 917505, 1, 1, 262144, 1, 0, 327680, 1, 1, 458766, 1, 0, 524302, 1, 1, 851977, 1, 0, 917513, 1, 1, 1114122, 1, 0, 1179658, 1, 1, 917526, 65537, 0, 983062, 65537, 1, 917527, 131073, 0, 983063, 131073, 1, 16, 2, 1, 65552, 2, 3, 17, 65538, 1, 65553, 65538, 3, 20, 131074, 1, 65556, 131074, 3, 19, 65538, 1, 18, 65538, 1, 65555, 65538, 3, 65554, 65538, 3, 720909, 1, 0, 786445, 1, 1, 720903, 65537, 0, 786439, 65537, 1, 720904, 131073, 0, 786440, 131073, 1, 1114119, 65537, 0, 1179655, 65537, 1, 1114120, 131073, 0, 1179656, 131073, 1, 3, 1, 1)
 metadata/_edit_lock_ = true
+
+[node name="Camera2D" type="Camera2D" parent="."]
+position = Vector2(9, 293)
+zoom = Vector2(2, 2)
+limit_left = 0
+limit_top = 0
+limit_right = 400
+limit_bottom = 320
