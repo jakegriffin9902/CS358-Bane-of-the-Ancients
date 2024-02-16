@@ -1,0 +1,9 @@
+[gd_scene load_steps=2 format=3 uid="uid://d3virlfty5ry5"]
+
+[ext_resource type="Texture2D" uid="uid://53x6uagpqg3t" path="res://characters/art/carrier_manimal.png" id="1_xcfsu"]
+
+[node name="CharacterBody2D" type="CharacterBody2D"]
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_xcfsu")
+hframes = 6
