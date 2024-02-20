@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=3 uid="uid://bd2qkb1x7iclb"]
+[gd_scene load_steps=16 format=3 uid="uid://bd2qkb1x7iclb"]
 
 [ext_resource type="PackedScene" uid="uid://bwjh30l734fb1" path="res://characters/player.tscn" id="1_3g8dm"]
 [ext_resource type="Texture2D" uid="uid://do5hvvxjpc20g" path="res://characters/art/carrier_human.png" id="1_n8gus"]
@@ -7,6 +7,7 @@
 [ext_resource type="Texture2D" uid="uid://d3yur6ee1q1kl" path="res://tile_sets/grass.png" id="3_kmaqy"]
 [ext_resource type="Texture2D" uid="uid://c3slqm68eafop" path="res://tile_sets/gronuds.png" id="4_fsc04"]
 [ext_resource type="AudioStream" uid="uid://cdt24uquqdct4" path="res://music/into_the_fen.wav" id="5_8ryl2"]
+[ext_resource type="Texture2D" uid="uid://b3u57jb4rqic" path="res://HeartIcon.png" id="6_5r72p"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_y2dfl"]
 size = Vector2(8, 15)
@@ -333,6 +334,48 @@ starting_direction = Vector2(1, 1)
 
 [node name="RemoteTransform2D" type="RemoteTransform2D" parent="Player"]
 remote_path = NodePath("../../Camera2D")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="Player"]
+
+[node name="HeartUI" type="TextureProgressBar" parent="Player/CanvasLayer"]
+offset_top = 1.0
+offset_right = 16.0
+offset_bottom = 17.0
+scale = Vector2(3, 3)
+max_value = 10.0
+value = 8.0
+texture_progress = ExtResource("6_5r72p")
+
+[node name="HeartUIText" type="RichTextLabel" parent="Player/CanvasLayer/HeartUI"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -5.33333
+offset_top = -5.66667
+offset_right = 14.6667
+offset_bottom = 15.3333
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(0.5, 0.5)
+
+[node name="HeartUIText2" type="RichTextLabel" parent="Player/CanvasLayer/HeartUI"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.49
+anchor_top = 0.5
+anchor_right = 0.49
+anchor_bottom = 0.5
+offset_left = -2.50667
+offset_top = -6.33333
+offset_right = 7.49333
+offset_bottom = 14.6667
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(0.5, 0.5)
+scroll_active = false
 
 [node name="Human carrier" type="CharacterBody2D" parent="."]
 position = Vector2(9, 293)
