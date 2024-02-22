@@ -338,9 +338,9 @@ remote_path = NodePath("../../Camera2D")
 [node name="CanvasLayer" type="CanvasLayer" parent="Player"]
 
 [node name="HeartUI" type="TextureProgressBar" parent="Player/CanvasLayer"]
-offset_top = 1.0
-offset_right = 16.0
-offset_bottom = 17.0
+offset_left = 3.0
+offset_right = 19.0
+offset_bottom = 16.0
 scale = Vector2(3, 3)
 max_value = 10.0
 value = 8.0
@@ -360,6 +360,7 @@ offset_bottom = 15.3333
 grow_horizontal = 2
 grow_vertical = 2
 scale = Vector2(0.5, 0.5)
+scroll_active = false
 
 [node name="HeartUIText2" type="RichTextLabel" parent="Player/CanvasLayer/HeartUI"]
 layout_mode = 1
