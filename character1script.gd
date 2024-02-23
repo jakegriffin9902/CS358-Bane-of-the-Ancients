@@ -5,7 +5,14 @@ extends CharacterBody2D
 
 @onready var animation_tree = $AnimationTree
 
-var maxHealth=10
+
+
+var agility=1
+var strength=1
+var constitution=1
+var aim=1
+var health=1
+var maxHealth=9+health
 var curHealth=10
 func _ready():
 	animation_tree.set("parameters/Move/blend_position", starting_direction)
