@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=3 uid="uid://bd2qkb1x7iclb"]
+[gd_scene load_steps=18 format=3 uid="uid://bd2qkb1x7iclb"]
 
 [ext_resource type="PackedScene" uid="uid://bwjh30l734fb1" path="res://characters/player.tscn" id="1_3g8dm"]
 [ext_resource type="Texture2D" uid="uid://do5hvvxjpc20g" path="res://characters/art/carrier_human.png" id="1_n8gus"]
@@ -8,6 +8,7 @@
 [ext_resource type="Texture2D" uid="uid://c3slqm68eafop" path="res://tile_sets/gronuds.png" id="4_fsc04"]
 [ext_resource type="AudioStream" uid="uid://cdt24uquqdct4" path="res://music/into_the_fen.wav" id="5_8ryl2"]
 [ext_resource type="Texture2D" uid="uid://b3u57jb4rqic" path="res://HeartIcon.png" id="6_5r72p"]
+[ext_resource type="Script" path="res://Area2D.gd" id="9_mlpi3"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_y2dfl"]
 size = Vector2(8, 15)
@@ -325,6 +326,9 @@ sources/3 = SubResource("TileSetAtlasSource_46w82")
 sources/4 = SubResource("TileSetAtlasSource_fya7p")
 sources/5 = SubResource("TileSetAtlasSource_vkqk7")
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_d2ur5"]
+size = Vector2(17, 38)
+
 [node name="Slouismo Fen Entrance" type="Node2D"]
 y_sort_enabled = true
 
@@ -338,9 +342,9 @@ remote_path = NodePath("../../Camera2D")
 [node name="CanvasLayer" type="CanvasLayer" parent="Player"]
 
 [node name="HeartUI" type="TextureProgressBar" parent="Player/CanvasLayer"]
-offset_top = 1.0
-offset_right = 16.0
-offset_bottom = 17.0
+offset_left = 3.0
+offset_right = 19.0
+offset_bottom = 16.0
 scale = Vector2(3, 3)
 max_value = 10.0
 value = 8.0
@@ -360,6 +364,7 @@ offset_bottom = 15.3333
 grow_horizontal = 2
 grow_vertical = 2
 scale = Vector2(0.5, 0.5)
+scroll_active = false
 
 [node name="HeartUIText2" type="RichTextLabel" parent="Player/CanvasLayer/HeartUI"]
 layout_mode = 1
@@ -444,3 +449,12 @@ limit_bottom = 320
 stream = ExtResource("5_8ryl2")
 volume_db = -20.0
 autoplay = true
+
+[node name="DialogueTriggerArea" type="Area2D" parent="."]
+position = Vector2(126, 162)
+script = ExtResource("9_mlpi3")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="DialogueTriggerArea"]
+shape = SubResource("RectangleShape2D_d2ur5")
+
+[connection signal="body_entered" from="DialogueTriggerArea" to="DialogueTriggerArea" method="_on_body_entered"]
