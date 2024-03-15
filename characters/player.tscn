@@ -4,7 +4,7 @@
 [ext_resource type="Texture2D" uid="uid://bwphge16iq4c" path="res://characters/art/player.png" id="2_yfnet"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_jtnif"]
-size = Vector2(12, 13)
+size = Vector2(12, 6.15385)
 
 [sub_resource type="Animation" id="Animation_r4na2"]
 length = 0.001
@@ -132,11 +132,12 @@ states/Move/position = Vector2(517.25, 94)
 transitions = ["Start", "Move", SubResource("AnimationNodeStateMachineTransition_w6joo")]
 
 [node name="CharacterBody2D" type="CharacterBody2D"]
+scale = Vector2(0.65, 0.65)
 script = ExtResource("1_ct57h")
 starting_direction = Vector2(-1, 2.08165e-12)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(2, 1.5)
+position = Vector2(0, 10.7692)
 shape = SubResource("RectangleShape2D_jtnif")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
