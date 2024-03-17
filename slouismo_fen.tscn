@@ -1,10 +1,11 @@
-[gd_scene load_steps=16 format=3 uid="uid://bd2qkb1x7iclb"]
+[gd_scene load_steps=17 format=3 uid="uid://bd2qkb1x7iclb"]
 
 [ext_resource type="PackedScene" uid="uid://bwjh30l734fb1" path="res://characters/player.tscn" id="1_3g8dm"]
 [ext_resource type="Texture2D" uid="uid://do5hvvxjpc20g" path="res://characters/art/carrier_human.png" id="1_n8gus"]
 [ext_resource type="Texture2D" uid="uid://53x6uagpqg3t" path="res://characters/art/carrier_manimal.png" id="2_dofxf"]
 [ext_resource type="Texture2D" uid="uid://cgrxlx1xngvk6" path="res://tile_sets/forest.png" id="2_l83mb"]
 [ext_resource type="Texture2D" uid="uid://d3yur6ee1q1kl" path="res://tile_sets/grass.png" id="3_kmaqy"]
+[ext_resource type="Script" path="res://HeartUI.gd" id="3_mht4v"]
 [ext_resource type="Texture2D" uid="uid://c3slqm68eafop" path="res://tile_sets/gronuds.png" id="4_fsc04"]
 [ext_resource type="AudioStream" uid="uid://cdt24uquqdct4" path="res://music/into_the_fen.wav" id="5_8ryl2"]
 [ext_resource type="Texture2D" uid="uid://b3u57jb4rqic" path="res://HeartIcon.png" id="6_5r72p"]
@@ -345,6 +346,7 @@ scale = Vector2(3, 3)
 max_value = 10.0
 value = 8.0
 texture_progress = ExtResource("6_5r72p")
+script = ExtResource("3_mht4v")
 
 [node name="HeartUIText" type="RichTextLabel" parent="Player/CanvasLayer/HeartUI"]
 layout_mode = 1

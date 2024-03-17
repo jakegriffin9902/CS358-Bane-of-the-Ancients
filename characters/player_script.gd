@@ -11,7 +11,6 @@ func _ready():
 	animation_tree.set("parameters/Move/blend_position", starting_direction)
 
 func _physics_process(_delta):
-	updateHeart()
 	# Get input direction
 	var input_direction = Vector2(
 		Input.get_action_strength("right") - Input.get_action_strength("left"),
@@ -29,10 +28,3 @@ func _physics_process(_delta):
 func update_animation_parameters(move_input : Vector2):
 		if(move_input != Vector2.ZERO):
 			animation_tree.set("parameters/Move/blend_position", move_input)
-			
-func updateHeart():
-	get_node("CanvasLayer/HeartUI").value=curHealth
-	if (curHealth>=10):
-		get_node("CanvasLayer/HeartUI/HeartUIText").text=str(curHealth)
-	else :
-		get_node("CanvasLayer/HeartUI/HeartUIText2").text=str(curHealth)
