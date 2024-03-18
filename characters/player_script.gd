@@ -28,3 +28,7 @@ func _physics_process(_delta):
 func update_animation_parameters(move_input : Vector2):
 		if(move_input != Vector2.ZERO):
 			animation_tree.set("parameters/Move/blend_position", move_input)
+
+
+func _on_action_1_trigger_body_entered(body):
+	print("Character entered the trigger area!")

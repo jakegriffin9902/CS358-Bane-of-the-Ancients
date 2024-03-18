@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=3 uid="uid://bd2qkb1x7iclb"]
+[gd_scene load_steps=19 format=3 uid="uid://bd2qkb1x7iclb"]
 
 [ext_resource type="PackedScene" uid="uid://bwjh30l734fb1" path="res://characters/player.tscn" id="1_3g8dm"]
 [ext_resource type="Texture2D" uid="uid://do5hvvxjpc20g" path="res://characters/art/carrier_human.png" id="1_n8gus"]
@@ -326,6 +326,12 @@ sources/3 = SubResource("TileSetAtlasSource_46w82")
 sources/4 = SubResource("TileSetAtlasSource_fya7p")
 sources/5 = SubResource("TileSetAtlasSource_vkqk7")
 
+[sub_resource type="GDScript" id="GDScript_bti8m"]
+
+[sub_resource type="SegmentShape2D" id="SegmentShape2D_ah5yp"]
+a = Vector2(118, 191)
+b = Vector2(41, 191)
+
 [node name="Slouismo Fen Entrance" type="Node2D"]
 y_sort_enabled = true
 
@@ -450,3 +456,11 @@ limit_bottom = 320
 stream = ExtResource("5_8ryl2")
 volume_db = -20.0
 autoplay = true
+
+[node name="Action1Trigger" type="Area2D" parent="."]
+script = SubResource("GDScript_bti8m")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Action1Trigger"]
+shape = SubResource("SegmentShape2D_ah5yp")
+
+[connection signal="body_entered" from="Action1Trigger" to="Player" method="_on_action_1_trigger_body_entered"]
