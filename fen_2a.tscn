@@ -1,15 +1,15 @@
-[gd_scene load_steps=20 format=3 uid="uid://bd2qkb1x7iclb"]
+[gd_scene load_steps=20 format=3 uid="uid://dmud382r015al"]
 
-[ext_resource type="PackedScene" uid="uid://bwjh30l734fb1" path="res://characters/player.tscn" id="1_3g8dm"]
-[ext_resource type="Texture2D" uid="uid://do5hvvxjpc20g" path="res://characters/art/carrier_human.png" id="1_n8gus"]
-[ext_resource type="Texture2D" uid="uid://53x6uagpqg3t" path="res://characters/art/carrier_manimal.png" id="2_dofxf"]
-[ext_resource type="Texture2D" uid="uid://cgrxlx1xngvk6" path="res://tile_sets/forest.png" id="2_l83mb"]
-[ext_resource type="Texture2D" uid="uid://d3yur6ee1q1kl" path="res://tile_sets/grass.png" id="3_kmaqy"]
-[ext_resource type="Script" path="res://HeartUI.gd" id="3_mht4v"]
-[ext_resource type="Texture2D" uid="uid://c3slqm68eafop" path="res://tile_sets/gronuds.png" id="4_fsc04"]
-[ext_resource type="AudioStream" uid="uid://cdt24uquqdct4" path="res://music/into_the_fen.wav" id="5_8ryl2"]
-[ext_resource type="Texture2D" uid="uid://b3u57jb4rqic" path="res://HeartIcon.png" id="6_5r72p"]
-[ext_resource type="PackedScene" uid="uid://di2538cf7gy23" path="res://portal.tscn" id="10_d25fu"]
+[ext_resource type="PackedScene" uid="uid://bwjh30l734fb1" path="res://characters/player.tscn" id="1_y3p7e"]
+[ext_resource type="Texture2D" uid="uid://b3u57jb4rqic" path="res://HeartIcon.png" id="2_8ti3j"]
+[ext_resource type="Script" path="res://HeartUI.gd" id="3_5eg1i"]
+[ext_resource type="Texture2D" uid="uid://do5hvvxjpc20g" path="res://characters/art/carrier_human.png" id="4_2rxc8"]
+[ext_resource type="Texture2D" uid="uid://53x6uagpqg3t" path="res://characters/art/carrier_manimal.png" id="5_1wiht"]
+[ext_resource type="Texture2D" uid="uid://cgrxlx1xngvk6" path="res://tile_sets/forest.png" id="6_qv34e"]
+[ext_resource type="Texture2D" uid="uid://d3yur6ee1q1kl" path="res://tile_sets/grass.png" id="7_uii7s"]
+[ext_resource type="Texture2D" uid="uid://c3slqm68eafop" path="res://tile_sets/gronuds.png" id="8_kialu"]
+[ext_resource type="AudioStream" uid="uid://cdt24uquqdct4" path="res://music/into_the_fen.wav" id="9_orwrw"]
+[ext_resource type="PackedScene" uid="uid://di2538cf7gy23" path="res://portal.tscn" id="10_gduyr"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_y2dfl"]
 size = Vector2(9, 6)
@@ -20,7 +20,7 @@ size = Vector2(10, 5.5)
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_mhu23"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_46w82"]
-texture = ExtResource("2_l83mb")
+texture = ExtResource("6_qv34e")
 0:0/0 = 0
 0:0/0/physics_layer_0/linear_velocity = Vector2(0, 0)
 0:0/0/physics_layer_0/angular_velocity = 0.0
@@ -108,7 +108,7 @@ texture = ExtResource("2_l83mb")
 4:4/0/physics_layer_0/polygon_0/points = PackedVector2Array(-4, 0, 5, 0, 7, 1, 7, 3, 5, 5, -4, 5, -6, 3, -6, 1)
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_fya7p"]
-texture = ExtResource("3_kmaqy")
+texture = ExtResource("7_uii7s")
 0:0/0 = 0
 0:0/0/physics_layer_0/linear_velocity = Vector2(0, 0)
 0:0/0/physics_layer_0/angular_velocity = 0.0
@@ -175,7 +175,7 @@ texture = ExtResource("3_kmaqy")
 3:3/0/physics_layer_0/polygon_0/points = PackedVector2Array(-7, 0, -5, 4, -2, 6, 5, 6, 7, 4, 7, -8, 3, -8, -3, -8, -7, -8)
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_vkqk7"]
-texture = ExtResource("4_fsc04")
+texture = ExtResource("8_kialu")
 0:0/0 = 0
 0:0/0/physics_layer_0/linear_velocity = Vector2(0, 0)
 0:0/0/physics_layer_0/angular_velocity = 0.0
@@ -336,7 +336,7 @@ b = Vector2(41, 191)
 [node name="Slouismo Fen Entrance" type="Node2D"]
 y_sort_enabled = true
 
-[node name="Player" parent="." instance=ExtResource("1_3g8dm")]
+[node name="Player" parent="." instance=ExtResource("1_y3p7e")]
 position = Vector2(9, 293)
 starting_direction = Vector2(1, 1)
 
@@ -352,8 +352,8 @@ offset_bottom = 16.0
 scale = Vector2(3, 3)
 max_value = 10.0
 value = 8.0
-texture_progress = ExtResource("6_5r72p")
-script = ExtResource("3_mht4v")
+texture_progress = ExtResource("2_8ti3j")
+script = ExtResource("3_5eg1i")
 
 [node name="HeartUIText" type="RichTextLabel" parent="Player/CanvasLayer/HeartUI"]
 layout_mode = 1
@@ -408,7 +408,7 @@ position = Vector2(9, 293)
 
 [node name="Sprite2D" type="Sprite2D" parent="Human carrier"]
 position = Vector2(184, -135)
-texture = ExtResource("1_n8gus")
+texture = ExtResource("4_2rxc8")
 hframes = 6
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Human carrier"]
@@ -421,7 +421,7 @@ position = Vector2(9, 293)
 
 [node name="Sprite2D" type="Sprite2D" parent="Animal carrier"]
 position = Vector2(168, -152)
-texture = ExtResource("2_dofxf")
+texture = ExtResource("5_1wiht")
 hframes = 6
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Animal carrier"]
@@ -469,7 +469,7 @@ limit_right = 400
 limit_bottom = 320
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
-stream = ExtResource("5_8ryl2")
+stream = ExtResource("9_orwrw")
 volume_db = -20.0
 autoplay = true
 
@@ -479,12 +479,8 @@ script = SubResource("GDScript_bti8m")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Action1Trigger"]
 shape = SubResource("SegmentShape2D_ah5yp")
 
-[node name="exit_north" parent="." instance=ExtResource("10_d25fu")]
-position = Vector2(434, 85)
+[node name="exit_north" parent="." instance=ExtResource("10_gduyr")]
 
-[node name="exit_south" parent="." instance=ExtResource("10_d25fu")]
-position = Vector2(428, 278)
+[node name="exit_south" parent="." instance=ExtResource("10_gduyr")]
 
 [connection signal="body_entered" from="Action1Trigger" to="Player" method="_on_action_1_trigger_body_entered"]
-[connection signal="body_entered" from="exit_north" to="Player" method="_on_exit_north_body_entered"]
-[connection signal="body_entered" from="exit_south" to="Player" method="_on_exit_south_body_entered"]

@@ -40,7 +40,7 @@ func update_animation_parameters(move_input : Vector2):
 			animation_tree.set("parameters/Move/blend_position", move_input)
 
 
-func _on_action_1_trigger_body_entered(body):
+func _on_action_1_trigger_body_entered(_body):
 	count_touch_action1 += 1
 	if count_touch_action1 != 1:
 		touch_action1 = true
@@ -48,3 +48,11 @@ func _on_action_1_trigger_body_entered(body):
 		game_text.visible = true
 		text_rect.visible = true
 		game_text.text = "Character entered the trigger area!"
+
+
+func _on_exit_north_body_entered(_body):
+	get_tree().change_scene_to_file("res://fen_2a.tscn")
+
+
+func _on_exit_south_body_entered(_body):
+	get_tree().change_scene_to_file("res://fen_2b.tscn")
