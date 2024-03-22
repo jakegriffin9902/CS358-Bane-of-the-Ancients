@@ -354,6 +354,7 @@ max_value = 10.0
 value = 8.0
 texture_progress = ExtResource("6_5r72p")
 script = ExtResource("3_mht4v")
+metadata/_edit_use_anchors_ = true
 
 [node name="HeartUIText" type="RichTextLabel" parent="Player/CanvasLayer/HeartUI"]
 layout_mode = 1
@@ -370,6 +371,7 @@ grow_horizontal = 2
 grow_vertical = 2
 scale = Vector2(0.5, 0.5)
 scroll_active = false
+metadata/_edit_use_anchors_ = true
 
 [node name="HeartUIText2" type="RichTextLabel" parent="Player/CanvasLayer/HeartUI"]
 layout_mode = 1
@@ -386,6 +388,7 @@ grow_horizontal = 2
 grow_vertical = 2
 scale = Vector2(0.5, 0.5)
 scroll_active = false
+metadata/_edit_use_anchors_ = true
 
 [node name="ColorRect" type="ColorRect" parent="Player/CanvasLayer"]
 offset_left = -4.0
@@ -470,7 +473,6 @@ limit_bottom = 320
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("5_8ryl2")
-volume_db = -20.0
 autoplay = true
 
 [node name="Action1Trigger" type="Area2D" parent="."]
@@ -480,10 +482,10 @@ script = SubResource("GDScript_bti8m")
 shape = SubResource("SegmentShape2D_ah5yp")
 
 [node name="exit_north" parent="." instance=ExtResource("10_d25fu")]
-position = Vector2(434, 85)
+position = Vector2(373, 39)
 
 [node name="exit_south" parent="." instance=ExtResource("10_d25fu")]
-position = Vector2(428, 278)
+position = Vector2(377, 228)
 
 [connection signal="body_entered" from="Action1Trigger" to="Player" method="_on_action_1_trigger_body_entered"]
 [connection signal="body_entered" from="exit_north" to="Player" method="_on_exit_north_body_entered"]
