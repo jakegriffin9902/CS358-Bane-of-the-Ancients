@@ -13,8 +13,26 @@ func Action1Trigger():
 		touch_action1 = true
 		print(get_tree())
 		can_move = false
-		get_node("CanvasLayer/background").set_visible(true)
-		get_node("CanvasLayer/text").set_visible(true)
-		get_node("CanvasLayer/text").set_text("You spot two wounded creatures nearby.
+		get_node("CanvasLayer").set_visible(true)
+		get_node("CanvasLayer/vbox/text").set_text("You spot two wounded creatures nearby.
 		Do you wish to help?")
 		get_parent().get_node("Player").set("can_move", false)
+
+
+func _on_yes_pressed():
+	pass # Replace with function body.
+
+
+func _on_no_pressed():
+	get_node("CanvasLayer/vbox/text").set_text(
+		"As you pass the creatures by,
+		they succumb to their wounds.")
+	get_node("CanvasLayer/vbox/hbox/no").set_visible(false)
+	get_node("CanvasLayer/vbox/hbox/yes").set_visible(false)
+	get_node("CanvasLayer/vbox/hbox/ok").set_visible(true)
+	
+
+
+func _on_ok_pressed():
+	get_parent().get_node("Player").set("can_move", true)
+	get_node("CanvasLayer").set_visible(false)

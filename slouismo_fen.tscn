@@ -459,30 +459,49 @@ limit_bottom = 320
 stream = ExtResource("5_8ryl2")
 autoplay = true
 
-[node name="Action1Trigger" type="Area2D" parent="."]
+[node name="1_assist_interaction" type="Area2D" parent="."]
 script = ExtResource("10_lfa1j")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Action1Trigger"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="1_assist_interaction"]
 shape = SubResource("SegmentShape2D_ah5yp")
 
-[node name="CanvasLayer" type="CanvasLayer" parent="Action1Trigger"]
-
-[node name="background" type="ColorRect" parent="Action1Trigger/CanvasLayer"]
+[node name="CanvasLayer" type="CanvasLayer" parent="1_assist_interaction"]
 visible = false
+
+[node name="background" type="ColorRect" parent="1_assist_interaction/CanvasLayer"]
 offset_left = -4.0
 offset_top = 233.0
 offset_right = 405.0
 offset_bottom = 326.0
 color = Color(0, 0, 0, 1)
 
-[node name="text" type="Label" parent="Action1Trigger/CanvasLayer"]
-visible = false
+[node name="vbox" type="VBoxContainer" parent="1_assist_interaction/CanvasLayer"]
 offset_left = 9.0
 offset_top = 234.0
-offset_right = 392.0
-offset_bottom = 312.0
+offset_right = 49.0
+offset_bottom = 274.0
+
+[node name="text" type="Label" parent="1_assist_interaction/CanvasLayer/vbox"]
+custom_minimum_size = Vector2(500, 2.08165e-12)
+layout_mode = 2
 text = "Sample text."
 autowrap_mode = 2
+
+[node name="hbox" type="HBoxContainer" parent="1_assist_interaction/CanvasLayer/vbox"]
+layout_mode = 2
+
+[node name="yes" type="Button" parent="1_assist_interaction/CanvasLayer/vbox/hbox"]
+layout_mode = 2
+text = "Yes"
+
+[node name="no" type="Button" parent="1_assist_interaction/CanvasLayer/vbox/hbox"]
+layout_mode = 2
+text = "No"
+
+[node name="ok" type="Button" parent="1_assist_interaction/CanvasLayer/vbox/hbox"]
+visible = false
+layout_mode = 2
+text = "OK"
 
 [node name="exit_north" parent="." instance=ExtResource("10_d25fu")]
 position = Vector2(373, 39)
@@ -490,6 +509,9 @@ position = Vector2(373, 39)
 [node name="exit_south" parent="." instance=ExtResource("10_d25fu")]
 position = Vector2(377, 228)
 
-[connection signal="body_entered" from="Action1Trigger" to="Action1Trigger" method="_on_body_entered"]
+[connection signal="body_entered" from="1_assist_interaction" to="1_assist_interaction" method="_on_body_entered"]
+[connection signal="pressed" from="1_assist_interaction/CanvasLayer/vbox/hbox/yes" to="1_assist_interaction" method="_on_yes_pressed"]
+[connection signal="pressed" from="1_assist_interaction/CanvasLayer/vbox/hbox/no" to="1_assist_interaction" method="_on_no_pressed"]
+[connection signal="pressed" from="1_assist_interaction/CanvasLayer/vbox/hbox/ok" to="1_assist_interaction" method="_on_ok_pressed"]
 [connection signal="body_entered" from="exit_north" to="Player" method="_on_exit_north_body_entered"]
 [connection signal="body_entered" from="exit_south" to="Player" method="_on_exit_south_body_entered"]
