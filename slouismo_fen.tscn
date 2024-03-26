@@ -1,4 +1,4 @@
-[gd_scene load_steps=21 format=3 uid="uid://bd2qkb1x7iclb"]
+[gd_scene load_steps=20 format=3 uid="uid://bd2qkb1x7iclb"]
 
 [ext_resource type="PackedScene" uid="uid://bwjh30l734fb1" path="res://characters/player.tscn" id="1_3g8dm"]
 [ext_resource type="Texture2D" uid="uid://do5hvvxjpc20g" path="res://characters/art/carrier_human.png" id="1_n8gus"]
@@ -11,7 +11,6 @@
 [ext_resource type="Texture2D" uid="uid://b3u57jb4rqic" path="res://HeartIcon.png" id="6_5r72p"]
 [ext_resource type="PackedScene" uid="uid://di2538cf7gy23" path="res://portal.tscn" id="10_d25fu"]
 [ext_resource type="Script" path="res://Action1Trigger.gd" id="10_lfa1j"]
-[ext_resource type="PackedScene" uid="uid://dtngt3c6d4oeb" path="res://text_box.tscn" id="11_xlg5m"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_y2dfl"]
 size = Vector2(9, 6)
@@ -462,14 +461,28 @@ autoplay = true
 
 [node name="Action1Trigger" type="Area2D" parent="."]
 script = ExtResource("10_lfa1j")
-touch_action1 = null
-count_touch_action1 = null
-can_move = null
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Action1Trigger"]
 shape = SubResource("SegmentShape2D_ah5yp")
 
-[node name="CanvasLayer" parent="Action1Trigger" instance=ExtResource("11_xlg5m")]
+[node name="CanvasLayer" type="CanvasLayer" parent="Action1Trigger"]
+
+[node name="background" type="ColorRect" parent="Action1Trigger/CanvasLayer"]
+visible = false
+offset_left = -4.0
+offset_top = 233.0
+offset_right = 405.0
+offset_bottom = 326.0
+color = Color(0, 0, 0, 1)
+
+[node name="text" type="Label" parent="Action1Trigger/CanvasLayer"]
+visible = false
+offset_left = 9.0
+offset_top = 234.0
+offset_right = 392.0
+offset_bottom = 312.0
+text = "Sample text."
+autowrap_mode = 2
 
 [node name="exit_north" parent="." instance=ExtResource("10_d25fu")]
 position = Vector2(373, 39)
