@@ -38,7 +38,7 @@ func update_animation_parameters(move_input : Vector2):
 
 
 func _on_exit_north_body_entered(_body):
-	get_tree().change_scene_to_file("res://fen_2a.tscn")
+	get_tree().change_scene_to_file("res://scenes/fen_2a.tscn")
 
 
 func _on_exit_south_body_entered(_body):
