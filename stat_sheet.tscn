@@ -239,6 +239,7 @@ visible = false
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("13_xiy4b")
+volume_db = -2.5
 autoplay = true
 
 [connection signal="pressed" from="stats/strength/minus" to="." method="strength_minus"]
