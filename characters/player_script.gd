@@ -6,9 +6,12 @@ extends CharacterBody2D
 
 @onready var animation_tree = $AnimationTree
 
-
-var maxHealth=10
-var curHealth=10
+var strength = 1
+var agility = 1
+var intelligence = 1
+var aim = 1
+var maxHealth = 10
+var curHealth = 10
 
 func _ready():
 	animation_tree.set("parameters/Move/blend_position", starting_direction)
@@ -38,8 +41,14 @@ func update_animation_parameters(move_input : Vector2):
 
 
 func _on_exit_north_body_entered(_body):
-	get_tree().change_scene_to_file("res://scenes/fen_2a.tscn")
+	get_tree().change_scene_to_file("res://stat_sheet.tscn")
 
 
 func _on_exit_south_body_entered(_body):
 	get_tree().change_scene_to_file("res://fen_2b.tscn")
+
+func _get(property):
+	return property
+
+func _set(property, value):
+	property = value

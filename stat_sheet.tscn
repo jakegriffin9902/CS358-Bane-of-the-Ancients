@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=3 uid="uid://brs5224vu2vum"]
+[gd_scene load_steps=14 format=3 uid="uid://brs5224vu2vum"]
 
 [ext_resource type="Texture2D" uid="uid://di41fl844d6sw" path="res://ui_art/stats/plus.png" id="1_fst7j"]
 [ext_resource type="Script" path="res://stat_sheet.gd" id="1_p8awl"]
@@ -12,6 +12,7 @@
 [ext_resource type="Texture2D" uid="uid://lp5l07nyxouf" path="res://ui_art/stats/confirm_selected.png" id="9_k28f5"]
 [ext_resource type="Texture2D" uid="uid://c4jyt3n75udl0" path="res://ui_art/stats/confirm_disabled.png" id="10_mhupj"]
 [ext_resource type="PackedScene" uid="uid://bwjh30l734fb1" path="res://characters/player.tscn" id="12_426bc"]
+[ext_resource type="AudioStream" uid="uid://dnmo26ptdw6eq" path="res://music/victory.wav" id="13_xiy4b"]
 
 [node name="stat_sheet" type="Control"]
 layout_mode = 3
@@ -58,13 +59,12 @@ stretch_mode = 4
 custom_minimum_size = Vector2(23, 23)
 layout_mode = 2
 bbcode_enabled = true
-text = "[color=black]10"
+text = "[color=black]"
 scroll_active = false
 
 [node name="plus" type="TextureButton" parent="stats/strength" groups=["plus"]]
 custom_minimum_size = Vector2(25, 21)
 layout_mode = 2
-disabled = true
 texture_normal = ExtResource("1_fst7j")
 texture_hover = ExtResource("2_m2m8c")
 texture_disabled = ExtResource("3_ud17e")
@@ -94,13 +94,12 @@ stretch_mode = 4
 custom_minimum_size = Vector2(23, 23)
 layout_mode = 2
 bbcode_enabled = true
-text = "[color=black]10"
+text = "[color=black]"
 scroll_active = false
 
 [node name="plus" type="TextureButton" parent="stats/intelligence" groups=["plus"]]
 custom_minimum_size = Vector2(25, 21)
 layout_mode = 2
-disabled = true
 texture_normal = ExtResource("1_fst7j")
 texture_hover = ExtResource("2_m2m8c")
 texture_disabled = ExtResource("3_ud17e")
@@ -130,12 +129,11 @@ stretch_mode = 4
 custom_minimum_size = Vector2(22, 23)
 layout_mode = 2
 bbcode_enabled = true
-text = "[color=black]10"
+text = "[color=black]"
 
 [node name="plus" type="TextureButton" parent="stats/aim" groups=["plus"]]
 custom_minimum_size = Vector2(25, 21)
 layout_mode = 2
-disabled = true
 texture_normal = ExtResource("1_fst7j")
 texture_hover = ExtResource("2_m2m8c")
 texture_disabled = ExtResource("3_ud17e")
@@ -165,12 +163,11 @@ stretch_mode = 4
 custom_minimum_size = Vector2(22, 23)
 layout_mode = 2
 bbcode_enabled = true
-text = "[color=black]10"
+text = "[color=black]"
 
 [node name="plus" type="TextureButton" parent="stats/agility" groups=["plus"]]
 custom_minimum_size = Vector2(25, 21)
 layout_mode = 2
-disabled = true
 texture_normal = ExtResource("1_fst7j")
 texture_hover = ExtResource("2_m2m8c")
 texture_disabled = ExtResource("3_ud17e")
@@ -200,12 +197,11 @@ stretch_mode = 4
 custom_minimum_size = Vector2(22, 23)
 layout_mode = 2
 bbcode_enabled = true
-text = "[color=black]10"
+text = "[color=black]"
 
 [node name="plus" type="TextureButton" parent="stats/health" groups=["plus"]]
 custom_minimum_size = Vector2(25, 21)
 layout_mode = 2
-disabled = true
 texture_normal = ExtResource("1_fst7j")
 texture_hover = ExtResource("2_m2m8c")
 texture_disabled = ExtResource("3_ud17e")
@@ -225,7 +221,7 @@ text = "[color=black]Available Points: "
 custom_minimum_size = Vector2(22, 23)
 layout_mode = 2
 bbcode_enabled = true
-text = "[color=black]10"
+text = "[color=black]"
 
 [node name="confirm" type="TextureButton" parent="stats"]
 custom_minimum_size = Vector2(60, 40)
@@ -240,3 +236,19 @@ stretch_mode = 0
 
 [node name="player" parent="." instance=ExtResource("12_426bc")]
 visible = false
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("13_xiy4b")
+autoplay = true
+
+[connection signal="pressed" from="stats/strength/minus" to="." method="strength_minus"]
+[connection signal="pressed" from="stats/strength/plus" to="." method="strength_plus"]
+[connection signal="pressed" from="stats/intelligence/minus" to="." method="intelligence_minus"]
+[connection signal="pressed" from="stats/intelligence/plus" to="." method="intelligence_plus"]
+[connection signal="pressed" from="stats/aim/minus" to="." method="aim_minus"]
+[connection signal="pressed" from="stats/aim/plus" to="." method="aim_plus"]
+[connection signal="pressed" from="stats/agility/minus" to="." method="agility_minus"]
+[connection signal="pressed" from="stats/agility/plus" to="." method="agility_plus"]
+[connection signal="pressed" from="stats/health/minus" to="." method="health_minus"]
+[connection signal="pressed" from="stats/health/plus" to="." method="health_plus"]
+[connection signal="pressed" from="stats/confirm" to="." method="_on_confirm_pressed"]
