@@ -1,8 +1,19 @@
+<<<<<<< Updated upstream
 [gd_scene load_steps=7 format=3 uid="uid://b512usxxkschk"]
+=======
+[gd_scene load_steps=26 format=3 uid="uid://b512usxxkschk"]
+>>>>>>> Stashed changes
 
 [ext_resource type="Texture2D" uid="uid://cae2jwu0i2yc3" path="res://backgriund.jpg" id="1_yrh5g"]
 [ext_resource type="Texture2D" uid="uid://c4fohm5t1agbo" path="res://skull.jpg" id="2_otdd7"]
+<<<<<<< Updated upstream
+=======
+[ext_resource type="Texture2D" uid="uid://cphb1oh1inc17" path="res://background.png" id="3_uod04"]
+>>>>>>> Stashed changes
 [ext_resource type="FontFile" uid="uid://cxlsfsc08gv5l" path="res://Pixel_NES.otf" id="3_xufrg"]
+[ext_resource type="Texture2D" uid="uid://bwfii1uegdoll" path="res://ui_art/button.png" id="6_vg5ay"]
+[ext_resource type="Texture2D" uid="uid://bi1d6lkv3wo61" path="res://ui_art/button_selected.png" id="7_qm2cy"]
+[ext_resource type="Texture2D" uid="uid://dc2ewi46dqxee" path="res://ui_art/button_disabled.png" id="8_jpcqw"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_vylep"]
 bg_color = Color(0.917647, 0, 0.129412, 1)
@@ -28,17 +39,90 @@ expand_margin_top = 1.0
 expand_margin_right = 1.0
 expand_margin_bottom = 1.0
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_rh0ju"]
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_hqkvs"]
 bg_color = Color(0, 0, 0, 1)
-border_width_left = 2
-border_width_top = 2
-border_width_right = 2
-border_width_bottom = 2
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_rh0ju"]
+bg_color = Color(0, 0, 0, 0)
+border_color = Color(0.8, 0.8, 0.8, 0)
 expand_margin_left = 2.0
 expand_margin_top = 2.0
 expand_margin_right = 2.0
 expand_margin_bottom = 2.0
 
+<<<<<<< Updated upstream
+=======
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_lkku5"]
+texture = ExtResource("6_vg5ay")
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_nrahp"]
+texture = ExtResource("7_qm2cy")
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_uf33u"]
+texture = ExtResource("8_jpcqw")
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_0nlqv"]
+texture = ExtResource("6_vg5ay")
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_w33gu"]
+texture = ExtResource("7_qm2cy")
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_hfcxj"]
+texture = ExtResource("8_jpcqw")
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_xrmpl"]
+texture = ExtResource("6_vg5ay")
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_v61dx"]
+texture = ExtResource("7_qm2cy")
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_00i3d"]
+texture = ExtResource("8_jpcqw")
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_c0lus"]
+bg_color = Color(0, 0, 0, 1)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+
+[sub_resource type="Animation" id="Animation_jg3cx"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("EnemyContainer/Enemy:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_r56km"]
+resource_name = "enemy_hit"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("EnemyContainer/Enemy:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0.1, 0.2, 0.3, 0.4, 0.5),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0), Color(1, 1, 1, 1), Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_6yep6"]
+_data = {
+"RESET": SubResource("Animation_jg3cx"),
+"enemy_hit": SubResource("Animation_r56km")
+}
+
+>>>>>>> Stashed changes
 [node name="Control" type="Control"]
 layout_mode = 3
 anchors_preset = 15
@@ -56,8 +140,12 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+<<<<<<< Updated upstream
 texture = ExtResource("1_yrh5g")
 expand_mode = 1
+=======
+texture = ExtResource("3_uod04")
+>>>>>>> Stashed changes
 
 [node name="EnemyContainer" type="VBoxContainer" parent="."]
 layout_mode = 1
@@ -96,7 +184,7 @@ anchor_bottom = 1.0
 offset_top = -168.0
 grow_horizontal = 2
 grow_vertical = 0
-theme_override_styles/panel = SubResource("StyleBoxFlat_rh0ju")
+theme_override_styles/panel = SubResource("StyleBoxFlat_hqkvs")
 
 [node name="HBoxContainer" type="HBoxContainer" parent="PlayerPanel"]
 layout_mode = 1
@@ -147,35 +235,119 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+<<<<<<< Updated upstream
+=======
+theme_override_fonts/font = ExtResource("3_xufrg")
+theme_override_font_sizes/font_size = 30
+
+[node name="Actions" type="Panel" parent="."]
+layout_mode = 1
+anchors_preset = 10
+anchor_right = 1.0
+offset_bottom = 160.0
+grow_horizontal = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_rh0ju")
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Actions"]
+layout_mode = 1
+anchors_preset = 10
+anchor_right = 1.0
+offset_top = 40.0
+offset_bottom = 190.0
+grow_horizontal = 2
+theme_override_constants/separation = 150
+>>>>>>> Stashed changes
 alignment = 1
 
 [node name="Attack" type="Button" parent="Actions/HBoxContainer"]
 custom_minimum_size = Vector2(500, 200)
 layout_mode = 2
 size_flags_horizontal = 4
-theme_override_colors/font_hover_color = Color(1, 1, 1, 1)
-theme_override_colors/font_hover_pressed_color = Color(0.207843, 0.207843, 0.207843, 1)
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_colors/font_pressed_color = Color(0, 0, 0, 1)
+theme_override_colors/font_hover_color = Color(0, 0, 0, 1)
+theme_override_colors/font_focus_color = Color(0, 0, 0, 1)
 theme_override_fonts/font = ExtResource("3_xufrg")
-theme_override_font_sizes/font_size = 100
+theme_override_font_sizes/font_size = 90
+theme_override_styles/normal = SubResource("StyleBoxTexture_lkku5")
+theme_override_styles/hover = SubResource("StyleBoxTexture_nrahp")
+theme_override_styles/pressed = SubResource("StyleBoxTexture_uf33u")
 text = "Attack
 "
 
 [node name="Talk" type="Button" parent="Actions/HBoxContainer"]
 custom_minimum_size = Vector2(500, 0)
 layout_mode = 2
-theme_override_colors/font_hover_color = Color(1, 1, 1, 1)
-theme_override_colors/font_hover_pressed_color = Color(0.207843, 0.207843, 0.207843, 1)
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_colors/font_pressed_color = Color(0, 0, 0, 1)
+theme_override_colors/font_hover_color = Color(0, 0, 0, 1)
+theme_override_colors/font_focus_color = Color(0, 0, 0, 1)
 theme_override_fonts/font = ExtResource("3_xufrg")
+<<<<<<< Updated upstream
 theme_override_font_sizes/font_size = 100
 text = "Talk
+=======
+theme_override_font_sizes/font_size = 90
+theme_override_styles/normal = SubResource("StyleBoxTexture_0nlqv")
+theme_override_styles/hover = SubResource("StyleBoxTexture_w33gu")
+theme_override_styles/pressed = SubResource("StyleBoxTexture_hfcxj")
+text = "Defend
+>>>>>>> Stashed changes
 "
 
 [node name="Run" type="Button" parent="Actions/HBoxContainer"]
 custom_minimum_size = Vector2(500, 0)
 layout_mode = 2
-theme_override_colors/font_hover_color = Color(1, 1, 1, 1)
-theme_override_colors/font_hover_pressed_color = Color(0.207843, 0.207843, 0.207843, 1)
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_colors/font_pressed_color = Color(0, 0, 0, 1)
+theme_override_colors/font_hover_color = Color(0, 0, 0, 1)
+theme_override_colors/font_focus_color = Color(0, 0, 0, 1)
 theme_override_fonts/font = ExtResource("3_xufrg")
 theme_override_font_sizes/font_size = 100
+theme_override_styles/normal = SubResource("StyleBoxTexture_xrmpl")
+theme_override_styles/hover = SubResource("StyleBoxTexture_v61dx")
+theme_override_styles/pressed = SubResource("StyleBoxTexture_00i3d")
 text = "Run
 "
+<<<<<<< Updated upstream
+=======
+
+[node name="Textbox" type="Panel" parent="."]
+visible = false
+layout_mode = 1
+anchors_preset = 10
+anchor_right = 1.0
+offset_left = 40.0
+offset_right = -40.0
+offset_bottom = 200.0
+grow_horizontal = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_c0lus")
+
+[node name="Label" type="Label" parent="Textbox"]
+layout_mode = 1
+anchors_preset = 4
+anchor_top = 0.5
+anchor_bottom = 0.5
+offset_left = 40.0
+offset_top = -60.0
+offset_right = 1400.0
+offset_bottom = 100.0
+grow_vertical = 2
+theme_override_fonts/font = ExtResource("3_xufrg")
+theme_override_font_sizes/font_size = 60
+text = "SKELETON"
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_6yep6")
+}
+
+[node name="Camera2D" type="Camera2D" parent="."]
+position = Vector2(-5, 0)
+anchor_mode = 0
+editor_draw_limits = true
+editor_draw_drag_margin = true
+
+[connection signal="pressed" from="Actions/HBoxContainer/Attack" to="." method="_on_attack_pressed"]
+[connection signal="pressed" from="Actions/HBoxContainer/Defend" to="." method="_on_defend_pressed"]
+>>>>>>> Stashed changes

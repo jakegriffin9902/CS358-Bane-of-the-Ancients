@@ -7,6 +7,7 @@ extends CharacterBody2D
 @export var touch_action1 : bool = false
 @export var count_touch_action1 : float = 0
 
+<<<<<<< Updated upstream
 @onready var animation_tree = $AnimationTree
 @onready var game_text = $CanvasLayer/GameText
 @onready var text_rect = $CanvasLayer/ColorRect
@@ -18,6 +19,20 @@ func _ready():
 	animation_tree.set("parameters/Move/blend_position", starting_direction)
 	game_text.visible = false
 	text_rect.visible = false
+=======
+var strength = 1
+var agility = 1
+var intelligence = 1
+var aim = 1
+var maxHealth = 12
+var curHealth = 8
+
+func _ready():
+	animation_tree.set("parameters/Move/blend_position", starting_direction)
+
+func test():
+	print("hello")
+>>>>>>> Stashed changes
 
 func _physics_process(_delta):
 	if can_move:
