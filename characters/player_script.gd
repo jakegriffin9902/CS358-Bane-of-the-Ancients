@@ -14,7 +14,7 @@ var maxHealth = 10
 var curHealth = 10
 
 func _ready():
-#	animation_tree.set("parameters/Move/blend_position", starting_direction)
+	animation_tree.set("parameters/Move/blend_position", starting_direction)
 	pass
 func test():
 	print("hello")
