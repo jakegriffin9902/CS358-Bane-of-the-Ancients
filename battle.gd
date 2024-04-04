@@ -59,4 +59,5 @@ func _on_attack_pressed():
 func _on_defend_pressed():
 	isdefending=1
 	enemy_turn()
+	isdefending=0
 
