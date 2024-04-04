@@ -1,0 +1,50 @@
+[gd_scene load_steps=8 format=3 uid="uid://h6pvonqb8ult"]
+
+[ext_resource type="Texture2D" uid="uid://ckwftdfx8yt80" path="res://ui_art/title_screen/title.png" id="1_6vel1"]
+[ext_resource type="Script" path="res://title.gd" id="1_46o4l"]
+[ext_resource type="Texture2D" uid="uid://bjbxofj3pveui" path="res://ui_art/title_screen/start.png" id="2_rs6os"]
+[ext_resource type="Texture2D" uid="uid://dt563iff14ykg" path="res://ui_art/title_screen/start_selected.png" id="3_bu3r6"]
+[ext_resource type="Texture2D" uid="uid://dwre806x3sxwn" path="res://ui_art/title_screen/exit.png" id="4_cpg2f"]
+[ext_resource type="Texture2D" uid="uid://db016rqs08xk0" path="res://ui_art/title_screen/exit_selected.png" id="5_pk6hr"]
+[ext_resource type="AudioStream" uid="uid://b8h4oe2w3horf" path="res://music/title.wav" id="7_nib03"]
+
+[node name="Control" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_46o4l")
+
+[node name="TextureRect" type="TextureRect" parent="."]
+layout_mode = 0
+offset_right = 418.0
+offset_bottom = 417.0
+texture = ExtResource("1_6vel1")
+stretch_mode = 4
+
+[node name="HBoxContainer" type="HBoxContainer" parent="TextureRect"]
+layout_mode = 0
+offset_left = 85.0
+offset_top = 243.0
+offset_right = 400.0
+offset_bottom = 289.0
+
+[node name="start" type="TextureButton" parent="TextureRect/HBoxContainer"]
+custom_minimum_size = Vector2(125, 2.08165e-12)
+layout_mode = 2
+texture_normal = ExtResource("2_rs6os")
+texture_hover = ExtResource("3_bu3r6")
+
+[node name="exit" type="TextureButton" parent="TextureRect/HBoxContainer"]
+layout_mode = 2
+texture_normal = ExtResource("4_cpg2f")
+texture_hover = ExtResource("5_pk6hr")
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("7_nib03")
+autoplay = true
+
+[connection signal="pressed" from="TextureRect/HBoxContainer/start" to="." method="_on_start_pressed"]
+[connection signal="pressed" from="TextureRect/HBoxContainer/exit" to="." method="_on_exit_pressed"]
