@@ -1,7 +1,7 @@
 [gd_scene load_steps=13 format=3 uid="uid://b512usxxkschk"]
 
 [ext_resource type="Script" path="res://battle.gd" id="1_3mavc"]
-[ext_resource type="Resource" uid="uid://c2whrs7on2kg5" path="res://characters/Zombie.tres" id="2_6j37p"]
+[ext_resource type="Resource" path="res://characters/Zombie.tres" id="2_6j37p"]
 [ext_resource type="Texture2D" uid="uid://c4fohm5t1agbo" path="res://skull.jpg" id="2_otdd7"]
 [ext_resource type="Texture2D" uid="uid://cae2jwu0i2yc3" path="res://backgriund.jpg" id="3_3eipt"]
 [ext_resource type="FontFile" uid="uid://cxlsfsc08gv5l" path="res://Pixel_NES.otf" id="3_xufrg"]

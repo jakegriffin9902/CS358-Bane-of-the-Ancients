@@ -24,7 +24,7 @@ func set_health(progress_bar,health,max_health):
 	progress_bar.value=health
 	progress_bar.max_value=max_health
 	progress_bar.get_node("Label").text="HP:%d/%d"%[health,max_health]
-func _input(event):
+func _input(_event):
 	if (Input.is_action_just_pressed("ui_accept") or Input.is_mouse_button_pressed(MOUSE_BUTTON_LEFT)) and $Textbox.visible:
 		$Textbox.hide()
 		emit_signal("textbox_closed")
