@@ -1,4 +1,4 @@
-[gd_scene load_steps=20 format=3 uid="uid://bd2qkb1x7iclb"]
+[gd_scene load_steps=21 format=3 uid="uid://bd2qkb1x7iclb"]
 
 [ext_resource type="PackedScene" uid="uid://bwjh30l734fb1" path="res://characters/player.tscn" id="1_3g8dm"]
 [ext_resource type="Texture2D" uid="uid://do5hvvxjpc20g" path="res://characters/art/carrier_human.png" id="1_n8gus"]
@@ -7,6 +7,7 @@
 [ext_resource type="Texture2D" uid="uid://d3yur6ee1q1kl" path="res://tile_sets/grass.png" id="3_kmaqy"]
 [ext_resource type="Script" path="res://HeartUI.gd" id="3_mht4v"]
 [ext_resource type="Texture2D" uid="uid://c3slqm68eafop" path="res://tile_sets/gronuds.png" id="4_fsc04"]
+[ext_resource type="FontFile" uid="uid://cxlsfsc08gv5l" path="res://Pixel_NES.otf" id="4_rb7eo"]
 [ext_resource type="AudioStream" uid="uid://cdt24uquqdct4" path="res://music/into_the_fen.wav" id="5_8ryl2"]
 [ext_resource type="Texture2D" uid="uid://b3u57jb4rqic" path="res://HeartIcon.png" id="6_5r72p"]
 [ext_resource type="PackedScene" uid="uid://di2538cf7gy23" path="res://portal.tscn" id="10_d25fu"]
@@ -488,6 +489,7 @@ offset_bottom = 274.0
 [node name="text" type="Label" parent="1_assist_interaction/CanvasLayer/vbox"]
 custom_minimum_size = Vector2(500, 2.08165e-12)
 layout_mode = 2
+theme_override_fonts/font = ExtResource("4_rb7eo")
 text = "Sample text."
 autowrap_mode = 2
 
@@ -496,15 +498,18 @@ layout_mode = 2
 
 [node name="yes" type="Button" parent="1_assist_interaction/CanvasLayer/vbox/hbox"]
 layout_mode = 2
+theme_override_fonts/font = ExtResource("4_rb7eo")
 text = "Yes"
 
 [node name="no" type="Button" parent="1_assist_interaction/CanvasLayer/vbox/hbox"]
 layout_mode = 2
+theme_override_fonts/font = ExtResource("4_rb7eo")
 text = "No"
 
 [node name="ok" type="Button" parent="1_assist_interaction/CanvasLayer/vbox/hbox"]
 visible = false
 layout_mode = 2
+theme_override_fonts/font = ExtResource("4_rb7eo")
 text = "OK"
 
 [node name="exit_north" parent="." instance=ExtResource("10_d25fu")]

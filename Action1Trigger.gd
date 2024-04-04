@@ -14,8 +14,8 @@ func Action1Trigger():
 		print(get_tree())
 		can_move = false
 		get_node("CanvasLayer").set_visible(true)
-		get_node("CanvasLayer/vbox/text").set_text("You spot two wounded creatures nearby.
-		Do you wish to help?")
+		get_node("CanvasLayer/vbox/text").set_text("You spot two wounded creatures
+		nearby. Do you wish to help?")
 		get_parent().get_node("Player").set("can_move", false)
 
 func _on_yes_pressed():
@@ -29,7 +29,8 @@ func _on_yes_pressed():
 	await get_tree().create_timer(3.0).timeout
 	
 	get_node("CanvasLayer/vbox/text").set_text(
-		"They suddenly become aggressive!")
+		"They suddenly become
+		aggressive!")
 		
 	await get_tree().create_timer(3.0).timeout
 	
