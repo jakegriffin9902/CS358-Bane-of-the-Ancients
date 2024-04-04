@@ -1,0 +1,11 @@
+[gd_resource type="Resource" load_steps=3 format=3 uid="uid://c2whrs7on2kg5"]
+
+[ext_resource type="Script" path="res://characters/BaseEnemy.gd" id="1_6wbmm"]
+[ext_resource type="Texture2D" uid="uid://do5hvvxjpc20g" path="res://characters/art/carrier_human.png" id="2_erks4"]
+
+[resource]
+script = ExtResource("1_6wbmm")
+name = "HumanZombie"
+texture = ExtResource("2_erks4")
+health = 10
+damage = 3

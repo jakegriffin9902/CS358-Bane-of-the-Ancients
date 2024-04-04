@@ -1,7 +1,9 @@
-[gd_scene load_steps=7 format=3 uid="uid://b512usxxkschk"]
+[gd_scene load_steps=13 format=3 uid="uid://b512usxxkschk"]
 
-[ext_resource type="Texture2D" uid="uid://cae2jwu0i2yc3" path="res://backgriund.jpg" id="1_yrh5g"]
+[ext_resource type="Script" path="res://battle.gd" id="1_3mavc"]
+[ext_resource type="Resource" uid="uid://c2whrs7on2kg5" path="res://characters/Zombie.tres" id="2_6j37p"]
 [ext_resource type="Texture2D" uid="uid://c4fohm5t1agbo" path="res://skull.jpg" id="2_otdd7"]
+[ext_resource type="Texture2D" uid="uid://cae2jwu0i2yc3" path="res://backgriund.jpg" id="3_3eipt"]
 [ext_resource type="FontFile" uid="uid://cxlsfsc08gv5l" path="res://Pixel_NES.otf" id="3_xufrg"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_vylep"]
@@ -39,25 +41,72 @@ expand_margin_top = 2.0
 expand_margin_right = 2.0
 expand_margin_bottom = 2.0
 
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_c0lus"]
+bg_color = Color(0, 0, 0, 1)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+
+[sub_resource type="Animation" id="Animation_jg3cx"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("EnemyContainer/Enemy:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_r56km"]
+resource_name = "enemy_hit"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("EnemyContainer/Enemy:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0.1, 0.2, 0.3, 0.4, 0.5),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0), Color(1, 1, 1, 1), Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_6yep6"]
+_data = {
+"RESET": SubResource("Animation_jg3cx"),
+"enemy_hit": SubResource("Animation_r56km")
+}
+
 [node name="Control" type="Control"]
 layout_mode = 3
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
+anchor_right = 0.2
+anchor_bottom = 0.2
+offset_right = 1920.0
+offset_bottom = 1304.0
 grow_horizontal = 2
 grow_vertical = 2
 scale = Vector2(0.2, 0.2)
+size_flags_horizontal = 4
+size_flags_vertical = 4
 size_flags_stretch_ratio = 9.35
+script = ExtResource("1_3mavc")
+enemy = ExtResource("2_6j37p")
 
-[node name="Background" type="TextureRect" parent="."]
+[node name="background" type="TextureRect" parent="."]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-texture = ExtResource("1_yrh5g")
-expand_mode = 1
+texture = ExtResource("3_3eipt")
 
 [node name="EnemyContainer" type="VBoxContainer" parent="."]
 layout_mode = 1
@@ -67,9 +116,9 @@ anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
 offset_left = -140.0
-offset_top = -183.0
-offset_right = 205.0
-offset_bottom = 264.0
+offset_top = -182.5
+offset_right = 140.0
+offset_bottom = 182.5
 grow_horizontal = 2
 grow_vertical = 2
 
@@ -77,23 +126,32 @@ grow_vertical = 2
 layout_mode = 2
 size_flags_vertical = 3
 texture = ExtResource("2_otdd7")
-expand_mode = 1
 
 [node name="ProgressBar" type="ProgressBar" parent="EnemyContainer"]
-custom_minimum_size = Vector2(15, 20)
+custom_minimum_size = Vector2(20, 25)
 layout_mode = 2
 theme_override_styles/background = SubResource("StyleBoxFlat_vylep")
 theme_override_styles/fill = SubResource("StyleBoxFlat_mtce6")
 value = 80.0
 show_percentage = false
 
-[node name="PlayerPanel" type="Panel" parent="."]
+[node name="Label" type="Label" parent="EnemyContainer/ProgressBar"]
 layout_mode = 1
-anchors_preset = 12
-anchor_top = 1.0
+anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_top = -168.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_fonts/font = ExtResource("3_xufrg")
+theme_override_font_sizes/font_size = 30
+
+[node name="PlayerPanel" type="Panel" parent="."]
+layout_mode = 1
+anchors_preset = -1
+anchor_top = 0.869
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = -0.320068
 grow_horizontal = 2
 grow_vertical = 0
 theme_override_styles/panel = SubResource("StyleBoxFlat_rh0ju")
@@ -103,10 +161,10 @@ layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_left = 25.0
-offset_top = 23.0
-offset_right = -28.0
-offset_bottom = -25.0
+offset_left = 120.0
+offset_top = 45.0
+offset_right = -120.0
+offset_bottom = -39.6801
 grow_horizontal = 2
 grow_vertical = 2
 alignment = 1
@@ -131,26 +189,35 @@ theme_override_styles/fill = SubResource("StyleBoxFlat_mtce6")
 value = 80.0
 show_percentage = false
 
-[node name="Actions" type="Panel" parent="."]
-layout_mode = 1
-anchors_preset = 10
-anchor_right = 1.0
-offset_right = 7.0
-offset_bottom = 172.0
-grow_horizontal = 2
-theme_override_styles/panel = SubResource("StyleBoxFlat_rh0ju")
-
-[node name="HBoxContainer" type="HBoxContainer" parent="Actions"]
+[node name="Label" type="Label" parent="PlayerPanel/HBoxContainer/ProgressBar"]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+theme_override_fonts/font = ExtResource("3_xufrg")
+theme_override_font_sizes/font_size = 30
+
+[node name="Actions" type="Panel" parent="."]
+layout_mode = 1
+anchors_preset = 10
+anchor_right = 1.0
+offset_bottom = 160.0
+grow_horizontal = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_rh0ju")
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Actions"]
+layout_mode = 1
+anchors_preset = 10
+anchor_right = 1.0
+offset_bottom = 150.0
+grow_horizontal = 2
+theme_override_constants/separation = 150
 alignment = 1
 
 [node name="Attack" type="Button" parent="Actions/HBoxContainer"]
-custom_minimum_size = Vector2(500, 200)
+custom_minimum_size = Vector2(500, 150)
 layout_mode = 2
 size_flags_horizontal = 4
 theme_override_colors/font_hover_color = Color(1, 1, 1, 1)
@@ -160,14 +227,14 @@ theme_override_font_sizes/font_size = 100
 text = "Attack
 "
 
-[node name="Talk" type="Button" parent="Actions/HBoxContainer"]
+[node name="Defend" type="Button" parent="Actions/HBoxContainer"]
 custom_minimum_size = Vector2(500, 0)
 layout_mode = 2
 theme_override_colors/font_hover_color = Color(1, 1, 1, 1)
 theme_override_colors/font_hover_pressed_color = Color(0.207843, 0.207843, 0.207843, 1)
 theme_override_fonts/font = ExtResource("3_xufrg")
 theme_override_font_sizes/font_size = 100
-text = "Talk
+text = "Defend
 "
 
 [node name="Run" type="Button" parent="Actions/HBoxContainer"]
@@ -179,3 +246,41 @@ theme_override_fonts/font = ExtResource("3_xufrg")
 theme_override_font_sizes/font_size = 100
 text = "Run
 "
+
+[node name="Textbox" type="Panel" parent="."]
+layout_mode = 1
+anchors_preset = 10
+anchor_right = 1.0
+offset_left = 40.0
+offset_right = -40.0
+offset_bottom = 200.0
+grow_horizontal = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_c0lus")
+
+[node name="Label" type="Label" parent="Textbox"]
+layout_mode = 1
+anchors_preset = 4
+anchor_top = 0.5
+anchor_bottom = 0.5
+offset_left = 40.0
+offset_top = -60.0
+offset_right = 1400.0
+offset_bottom = 100.0
+grow_vertical = 2
+theme_override_fonts/font = ExtResource("3_xufrg")
+theme_override_font_sizes/font_size = 60
+text = "SKELETON"
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_6yep6")
+}
+
+[node name="Camera2D" type="Camera2D" parent="."]
+position = Vector2(-5, 0)
+anchor_mode = 0
+editor_draw_limits = true
+editor_draw_drag_margin = true
+
+[connection signal="pressed" from="Actions/HBoxContainer/Attack" to="." method="_on_attack_pressed"]
+[connection signal="pressed" from="Actions/HBoxContainer/Defend" to="." method="_on_defend_pressed"]

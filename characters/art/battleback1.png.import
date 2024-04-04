@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dp2jjqc4pn6a1"
-path="res://.godot/imported/button_disabled.png-74d31a612b611895672a64bd1f8f076e.ctex"
+uid="uid://7ve326by2mf3"
+path="res://.godot/imported/battleback1.png-fd6009f2d4636b59779fd560280944eb.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://ui_art/button_disabled.png"
-dest_files=["res://.godot/imported/button_disabled.png-74d31a612b611895672a64bd1f8f076e.ctex"]
+source_file="res://characters/art/battleback1.png"
+dest_files=["res://.godot/imported/battleback1.png-fd6009f2d4636b59779fd560280944eb.ctex"]
 
 [params]
 
