@@ -1,4 +1,4 @@
-[gd_scene load_steps=27 format=3 uid="uid://b512usxxkschk"]
+[gd_scene load_steps=28 format=3 uid="uid://b512usxxkschk"]
 
 [ext_resource type="Script" path="res://battle.gd" id="1_3mavc"]
 [ext_resource type="Texture2D" uid="uid://c4fohm5t1agbo" path="res://skull.jpg" id="2_otdd7"]
@@ -9,6 +9,7 @@
 [ext_resource type="Texture2D" uid="uid://cjy7lfih10j11" path="res://ui_art/button_disabled.png" id="8_jpcqw"]
 [ext_resource type="PackedScene" uid="uid://bwjh30l734fb1" path="res://characters/player.tscn" id="9_3ogoo"]
 [ext_resource type="Script" path="res://zombie.gd" id="10_7k72g"]
+[ext_resource type="AudioStream" uid="uid://c6isbhikk3fuf" path="res://music/danger.wav" id="10_8fgq4"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_vylep"]
 bg_color = Color(0.917647, 0, 0.129412, 1)
@@ -323,9 +324,14 @@ editor_draw_limits = true
 editor_draw_drag_margin = true
 
 [node name="player" parent="." instance=ExtResource("9_3ogoo")]
+visible = false
 
 [node name="zombie" type="CharacterBody2D" parent="."]
 script = ExtResource("10_7k72g")
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("10_8fgq4")
+autoplay = true
 
 [connection signal="pressed" from="Actions/HBoxContainer/Attack" to="." method="_on_attack_pressed"]
 [connection signal="pressed" from="Actions/HBoxContainer/Defend" to="." method="_on_defend_pressed"]

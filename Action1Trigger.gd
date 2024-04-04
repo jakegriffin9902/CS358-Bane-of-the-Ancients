@@ -20,7 +20,8 @@ func Action1Trigger():
 
 
 func _on_yes_pressed():
-	pass # Replace with function body.
+	# We need to add more text to lead into combat
+	get_tree().change_scene_to_file("res://battletest.tscn")
 
 
 func _on_no_pressed():
