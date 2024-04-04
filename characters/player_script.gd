@@ -11,14 +11,14 @@ extends CharacterBody2D
 @onready var game_text = $CanvasLayer/GameText
 @onready var text_rect = $CanvasLayer/ColorRect
 
-var maxHealth=10
-var curHealth=10
+var maxHealth=8
+var curHealth=6
 
 func _ready():
-	animation_tree.set("parameters/Move/blend_position", starting_direction)
-	game_text.visible = false
-	text_rect.visible = false
-
+	#animation_tree.set("parameters/Move/blend_position", starting_direction)
+	#game_text.visible = false
+	#text_rect.visible = false
+	pass
 func _physics_process(_delta):
 	if can_move:
 		# Get input direction
