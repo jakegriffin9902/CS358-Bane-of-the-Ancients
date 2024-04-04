@@ -7,6 +7,7 @@ signal textbox_closed
 var current_player_health=0
 var current_enemy_health=0
 var isdefending=false
+var rng = RandomNumberGenerator.new()
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	set_health($EnemyContainer/ProgressBar, enemy.health,enemy.health)
@@ -39,8 +40,9 @@ func enemy_turn():
 		display_text("You block the attack!")
 		await textbox_closed
 		current_player_health-=1
+		isdefending=false
 	else:
-		current_player_health=max(0,current_player_health-enemy.damage)
+		current_player_health=max(0,current_player_health-rng.randf_range(1, enemy.damage))
 
 	set_health($PlayerPanel/HBoxContainer/ProgressBar,current_player_health,PlayerScript.maxHealth)
 
@@ -49,7 +51,7 @@ func enemy_turn():
 func _on_attack_pressed():
 	display_text("You swing your sword!")
 	await textbox_closed
-	current_enemy_health=max(0,current_enemy_health-3)
+	current_enemy_health=max(0,current_enemy_health-(PlayerScript.strength+rng.randf_range(0, 4)))
 	set_health($EnemyContainer/ProgressBar,current_enemy_health,enemy.health)
 	$AnimationPlayer.play("enemy_hit")
 	await "animation_finished"
@@ -57,7 +59,6 @@ func _on_attack_pressed():
 
 
 func _on_defend_pressed():
-	isdefending=1
+	isdefending=true
 	enemy_turn()
-	isdefending=0
 
