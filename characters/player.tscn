@@ -130,6 +130,7 @@ advance_mode = 2
 states/Move/node = SubResource("AnimationNodeBlendSpace2D_pvcco")
 states/Move/position = Vector2(517.25, 94)
 transitions = ["Start", "Move", SubResource("AnimationNodeStateMachineTransition_w6joo")]
+graph_offset = Vector2(-104.827, -9.04748)
 
 [node name="CharacterBody2D" type="CharacterBody2D"]
 scale = Vector2(0.65, 0.65)

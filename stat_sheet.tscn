@@ -228,6 +228,7 @@ custom_minimum_size = Vector2(60, 40)
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
+disabled = true
 texture_normal = ExtResource("8_x627h")
 texture_hover = ExtResource("9_k28f5")
 texture_disabled = ExtResource("10_mhupj")

@@ -49,15 +49,23 @@ func _on_confirm_pressed():
 	player.set("maxHealth", player.get("maxHealth") + health_add)
 	get_tree().change_scene_to_file("res://scenes/fen_2a.tscn")
 
+func update_confirm():
+	if (player_points > 0):
+		get_node("stats/confirm").set_disabled(true)
+	else:
+		get_node("stats/confirm").set_disabled(false)
+
 func decrease_available_points():
 	player_points -= 1
 	available_points.set_text(format + str(player_points))
 	update_plus_restriction(player_points)
+	update_confirm()
 
 func increase_available_points():
 	player_points += 1
 	available_points.set_text(format + str(player_points))
 	update_plus_restriction(player_points)
+	update_confirm()
 
 func strength_minus():
 	strength_add -= 1
