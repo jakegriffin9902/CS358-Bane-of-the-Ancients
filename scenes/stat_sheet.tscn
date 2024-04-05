@@ -1,0 +1,369 @@
+[gd_scene load_steps=19 format=3 uid="uid://brs5224vu2vum"]
+
+[ext_resource type="Texture2D" uid="uid://di41fl844d6sw" path="res://ui_art/stats/plus.png" id="1_fst7j"]
+[ext_resource type="Script" path="res://stat_sheet.gd" id="1_p8awl"]
+[ext_resource type="Texture2D" uid="uid://65ysx04o07u8" path="res://ui_art/stats/plus_selected.png" id="2_m2m8c"]
+[ext_resource type="Texture2D" uid="uid://cv34j8hred2tx" path="res://ui_art/stats/background.png" id="2_nf75c"]
+[ext_resource type="FontFile" uid="uid://cxlsfsc08gv5l" path="res://ui_art/Pixel_NES.otf" id="3_ci0y7"]
+[ext_resource type="Texture2D" uid="uid://b567h8e0485ne" path="res://ui_art/stats/plus_disabled.png" id="3_ud17e"]
+[ext_resource type="Texture2D" uid="uid://qpye4g8y6u5d" path="res://ui_art/stats/minus.png" id="4_vbn2g"]
+[ext_resource type="Texture2D" uid="uid://2qrnm1138res" path="res://ui_art/stats/minus_selected.png" id="5_547jt"]
+[ext_resource type="Texture2D" uid="uid://d3n57r5ac8v8r" path="res://ui_art/stats/minus_disabled.png" id="6_30esw"]
+[ext_resource type="Texture2D" uid="uid://dvkjebme5p13h" path="res://ui_art/button.png" id="10_slnae"]
+[ext_resource type="Texture2D" uid="uid://dhip4nygb7qoy" path="res://ui_art/button_selected.png" id="11_xpik1"]
+[ext_resource type="Texture2D" uid="uid://cjy7lfih10j11" path="res://ui_art/button_disabled.png" id="12_72jxo"]
+[ext_resource type="PackedScene" uid="uid://bwjh30l734fb1" path="res://characters/player.tscn" id="12_426bc"]
+[ext_resource type="AudioStream" uid="uid://dnmo26ptdw6eq" path="res://music/victory.wav" id="13_xiy4b"]
+
+[sub_resource type="Theme" id="Theme_yvfmc"]
+default_font = ExtResource("3_ci0y7")
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_8cbb4"]
+texture = ExtResource("10_slnae")
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_jba45"]
+texture = ExtResource("11_xpik1")
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_yexq8"]
+texture = ExtResource("12_72jxo")
+
+[node name="stat_sheet" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_p8awl")
+
+[node name="TextureRect" type="TextureRect" parent="."]
+layout_mode = 0
+offset_right = 517.0
+offset_bottom = 430.0
+texture = ExtResource("2_nf75c")
+
+[node name="stats" type="VBoxContainer" parent="."]
+layout_mode = 0
+offset_right = 383.0
+offset_bottom = 300.0
+alignment = 1
+
+[node name="strength" type="HBoxContainer" parent="stats"]
+layout_mode = 2
+alignment = 1
+
+[node name="label" type="RichTextLabel" parent="stats/strength"]
+custom_minimum_size = Vector2(150, 23)
+layout_mode = 2
+theme = SubResource("Theme_yvfmc")
+theme_override_colors/default_color = Color(0, 0, 0, 1)
+theme_override_colors/font_selected_color = Color(0, 0, 0, 1)
+theme_override_colors/selection_color = Color(0, 0, 0, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_colors/table_odd_row_bg = Color(0, 0, 0, 1)
+theme_override_colors/table_even_row_bg = Color(0, 0, 0, 1)
+theme_override_colors/table_border = Color(0, 0, 0, 1)
+bbcode_enabled = true
+text = "Strength"
+
+[node name="minus" type="TextureButton" parent="stats/strength"]
+custom_minimum_size = Vector2(25, 22)
+layout_mode = 2
+size_flags_vertical = 0
+disabled = true
+texture_normal = ExtResource("4_vbn2g")
+texture_hover = ExtResource("5_547jt")
+texture_disabled = ExtResource("6_30esw")
+stretch_mode = 4
+
+[node name="value" type="RichTextLabel" parent="stats/strength" groups=["values"]]
+custom_minimum_size = Vector2(30, 23)
+layout_mode = 2
+theme = SubResource("Theme_yvfmc")
+theme_override_colors/default_color = Color(0, 0, 0, 1)
+theme_override_colors/font_selected_color = Color(0, 0, 0, 1)
+theme_override_colors/selection_color = Color(0, 0, 0, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_colors/table_odd_row_bg = Color(0, 0, 0, 1)
+theme_override_colors/table_even_row_bg = Color(0, 0, 0, 1)
+theme_override_colors/table_border = Color(0, 0, 0, 1)
+bbcode_enabled = true
+scroll_active = false
+
+[node name="plus" type="TextureButton" parent="stats/strength" groups=["plus"]]
+custom_minimum_size = Vector2(25, 21)
+layout_mode = 2
+texture_normal = ExtResource("1_fst7j")
+texture_hover = ExtResource("2_m2m8c")
+texture_disabled = ExtResource("3_ud17e")
+stretch_mode = 4
+
+[node name="intelligence" type="HBoxContainer" parent="stats"]
+layout_mode = 2
+alignment = 1
+
+[node name="label" type="RichTextLabel" parent="stats/intelligence"]
+custom_minimum_size = Vector2(150, 23)
+layout_mode = 2
+theme = SubResource("Theme_yvfmc")
+theme_override_colors/default_color = Color(0, 0, 0, 1)
+theme_override_colors/font_selected_color = Color(0, 0, 0, 1)
+theme_override_colors/selection_color = Color(0, 0, 0, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_colors/table_odd_row_bg = Color(0, 0, 0, 1)
+theme_override_colors/table_even_row_bg = Color(0, 0, 0, 1)
+theme_override_colors/table_border = Color(0, 0, 0, 1)
+bbcode_enabled = true
+text = "Intelligence"
+
+[node name="minus" type="TextureButton" parent="stats/intelligence"]
+custom_minimum_size = Vector2(25, 22)
+layout_mode = 2
+size_flags_vertical = 0
+disabled = true
+texture_normal = ExtResource("4_vbn2g")
+texture_hover = ExtResource("5_547jt")
+texture_disabled = ExtResource("6_30esw")
+stretch_mode = 4
+
+[node name="value" type="RichTextLabel" parent="stats/intelligence" groups=["values"]]
+custom_minimum_size = Vector2(30, 23)
+layout_mode = 2
+theme = SubResource("Theme_yvfmc")
+theme_override_colors/default_color = Color(0, 0, 0, 1)
+theme_override_colors/font_selected_color = Color(0, 0, 0, 1)
+theme_override_colors/selection_color = Color(0, 0, 0, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_colors/table_odd_row_bg = Color(0, 0, 0, 1)
+theme_override_colors/table_even_row_bg = Color(0, 0, 0, 1)
+theme_override_colors/table_border = Color(0, 0, 0, 1)
+bbcode_enabled = true
+scroll_active = false
+
+[node name="plus" type="TextureButton" parent="stats/intelligence" groups=["plus"]]
+custom_minimum_size = Vector2(25, 21)
+layout_mode = 2
+texture_normal = ExtResource("1_fst7j")
+texture_hover = ExtResource("2_m2m8c")
+texture_disabled = ExtResource("3_ud17e")
+stretch_mode = 4
+
+[node name="aim" type="HBoxContainer" parent="stats"]
+layout_mode = 2
+alignment = 1
+
+[node name="label" type="RichTextLabel" parent="stats/aim"]
+custom_minimum_size = Vector2(150, 23)
+layout_mode = 2
+theme = SubResource("Theme_yvfmc")
+theme_override_colors/default_color = Color(0, 0, 0, 1)
+theme_override_colors/font_selected_color = Color(0, 0, 0, 1)
+theme_override_colors/selection_color = Color(0, 0, 0, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_colors/table_odd_row_bg = Color(0, 0, 0, 1)
+theme_override_colors/table_even_row_bg = Color(0, 0, 0, 1)
+theme_override_colors/table_border = Color(0, 0, 0, 1)
+bbcode_enabled = true
+text = "Aim"
+
+[node name="minus" type="TextureButton" parent="stats/aim"]
+custom_minimum_size = Vector2(25, 22)
+layout_mode = 2
+size_flags_vertical = 0
+disabled = true
+texture_normal = ExtResource("4_vbn2g")
+texture_hover = ExtResource("5_547jt")
+texture_disabled = ExtResource("6_30esw")
+stretch_mode = 4
+
+[node name="value" type="RichTextLabel" parent="stats/aim" groups=["values"]]
+custom_minimum_size = Vector2(30, 23)
+layout_mode = 2
+theme = SubResource("Theme_yvfmc")
+theme_override_colors/default_color = Color(0, 0, 0, 1)
+theme_override_colors/font_selected_color = Color(0, 0, 0, 1)
+theme_override_colors/selection_color = Color(0, 0, 0, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_colors/table_odd_row_bg = Color(0, 0, 0, 1)
+theme_override_colors/table_even_row_bg = Color(0, 0, 0, 1)
+theme_override_colors/table_border = Color(0, 0, 0, 1)
+bbcode_enabled = true
+
+[node name="plus" type="TextureButton" parent="stats/aim" groups=["plus"]]
+custom_minimum_size = Vector2(25, 21)
+layout_mode = 2
+texture_normal = ExtResource("1_fst7j")
+texture_hover = ExtResource("2_m2m8c")
+texture_disabled = ExtResource("3_ud17e")
+stretch_mode = 4
+
+[node name="agility" type="HBoxContainer" parent="stats"]
+layout_mode = 2
+alignment = 1
+
+[node name="label" type="RichTextLabel" parent="stats/agility"]
+custom_minimum_size = Vector2(150, 23)
+layout_mode = 2
+theme = SubResource("Theme_yvfmc")
+theme_override_colors/default_color = Color(0, 0, 0, 1)
+theme_override_colors/font_selected_color = Color(0, 0, 0, 1)
+theme_override_colors/selection_color = Color(0, 0, 0, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_colors/table_odd_row_bg = Color(0, 0, 0, 1)
+theme_override_colors/table_even_row_bg = Color(0, 0, 0, 1)
+theme_override_colors/table_border = Color(0, 0, 0, 1)
+bbcode_enabled = true
+text = "Agility"
+
+[node name="minus" type="TextureButton" parent="stats/agility"]
+custom_minimum_size = Vector2(25, 22)
+layout_mode = 2
+size_flags_vertical = 0
+disabled = true
+texture_normal = ExtResource("4_vbn2g")
+texture_hover = ExtResource("5_547jt")
+texture_disabled = ExtResource("6_30esw")
+stretch_mode = 4
+
+[node name="value" type="RichTextLabel" parent="stats/agility" groups=["values"]]
+custom_minimum_size = Vector2(30, 23)
+layout_mode = 2
+theme = SubResource("Theme_yvfmc")
+theme_override_colors/default_color = Color(0, 0, 0, 1)
+theme_override_colors/font_selected_color = Color(0, 0, 0, 1)
+theme_override_colors/selection_color = Color(0, 0, 0, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_colors/table_odd_row_bg = Color(0, 0, 0, 1)
+theme_override_colors/table_even_row_bg = Color(0, 0, 0, 1)
+theme_override_colors/table_border = Color(0, 0, 0, 1)
+bbcode_enabled = true
+
+[node name="plus" type="TextureButton" parent="stats/agility" groups=["plus"]]
+custom_minimum_size = Vector2(25, 21)
+layout_mode = 2
+texture_normal = ExtResource("1_fst7j")
+texture_hover = ExtResource("2_m2m8c")
+texture_disabled = ExtResource("3_ud17e")
+stretch_mode = 4
+
+[node name="health" type="HBoxContainer" parent="stats"]
+layout_mode = 2
+alignment = 1
+
+[node name="label" type="RichTextLabel" parent="stats/health"]
+custom_minimum_size = Vector2(150, 33)
+layout_mode = 2
+theme = SubResource("Theme_yvfmc")
+theme_override_colors/default_color = Color(0, 0, 0, 1)
+theme_override_colors/font_selected_color = Color(0, 0, 0, 1)
+theme_override_colors/selection_color = Color(0, 0, 0, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_colors/table_odd_row_bg = Color(0, 0, 0, 1)
+theme_override_colors/table_even_row_bg = Color(0, 0, 0, 1)
+theme_override_colors/table_border = Color(0, 0, 0, 1)
+bbcode_enabled = true
+text = "Health"
+
+[node name="minus" type="TextureButton" parent="stats/health"]
+custom_minimum_size = Vector2(25, 22)
+layout_mode = 2
+size_flags_vertical = 0
+disabled = true
+texture_normal = ExtResource("4_vbn2g")
+texture_hover = ExtResource("5_547jt")
+texture_disabled = ExtResource("6_30esw")
+stretch_mode = 4
+
+[node name="value" type="RichTextLabel" parent="stats/health" groups=["values"]]
+custom_minimum_size = Vector2(30, 23)
+layout_mode = 2
+theme = SubResource("Theme_yvfmc")
+theme_override_colors/default_color = Color(0, 0, 0, 1)
+theme_override_colors/font_selected_color = Color(0, 0, 0, 1)
+theme_override_colors/selection_color = Color(0, 0, 0, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_colors/table_odd_row_bg = Color(0, 0, 0, 1)
+theme_override_colors/table_even_row_bg = Color(0, 0, 0, 1)
+theme_override_colors/table_border = Color(0, 0, 0, 1)
+bbcode_enabled = true
+
+[node name="plus" type="TextureButton" parent="stats/health" groups=["plus"]]
+custom_minimum_size = Vector2(25, 21)
+layout_mode = 2
+texture_normal = ExtResource("1_fst7j")
+texture_hover = ExtResource("2_m2m8c")
+texture_disabled = ExtResource("3_ud17e")
+stretch_mode = 4
+
+[node name="points" type="HBoxContainer" parent="stats"]
+layout_mode = 2
+alignment = 1
+
+[node name="label" type="RichTextLabel" parent="stats/points"]
+custom_minimum_size = Vector2(209, 23)
+layout_mode = 2
+theme = SubResource("Theme_yvfmc")
+theme_override_colors/default_color = Color(0, 0, 0, 1)
+theme_override_colors/font_selected_color = Color(0, 0, 0, 1)
+theme_override_colors/selection_color = Color(0, 0, 0, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_colors/table_odd_row_bg = Color(0, 0, 0, 1)
+theme_override_colors/table_even_row_bg = Color(0, 0, 0, 1)
+theme_override_colors/table_border = Color(0, 0, 0, 1)
+bbcode_enabled = true
+text = "Available Points:"
+
+[node name="value" type="RichTextLabel" parent="stats/points" groups=["values"]]
+custom_minimum_size = Vector2(30, 23)
+layout_mode = 2
+theme = SubResource("Theme_yvfmc")
+theme_override_colors/default_color = Color(0, 0, 0, 1)
+theme_override_colors/font_selected_color = Color(0, 0, 0, 1)
+theme_override_colors/selection_color = Color(0, 0, 0, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_colors/table_odd_row_bg = Color(0, 0, 0, 1)
+theme_override_colors/table_even_row_bg = Color(0, 0, 0, 1)
+theme_override_colors/table_border = Color(0, 0, 0, 1)
+bbcode_enabled = true
+
+[node name="confirm" type="Button" parent="stats"]
+custom_minimum_size = Vector2(77, 45)
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_colors/font_pressed_color = Color(0, 0, 0, 1)
+theme_override_colors/font_hover_color = Color(0, 0, 0, 1)
+theme_override_colors/font_hover_pressed_color = Color(0, 0, 0, 1)
+theme_override_colors/font_disabled_color = Color(0, 0, 0, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_colors/icon_normal_color = Color(0, 0, 0, 1)
+theme_override_colors/icon_pressed_color = Color(0, 0, 0, 1)
+theme_override_colors/icon_hover_color = Color(0, 0, 0, 1)
+theme_override_colors/icon_hover_pressed_color = Color(0, 0, 0, 1)
+theme_override_colors/icon_focus_color = Color(0, 0, 0, 1)
+theme_override_colors/icon_disabled_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("3_ci0y7")
+theme_override_styles/normal = SubResource("StyleBoxTexture_8cbb4")
+theme_override_styles/hover = SubResource("StyleBoxTexture_jba45")
+theme_override_styles/disabled = SubResource("StyleBoxTexture_yexq8")
+disabled = true
+text = "Done"
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("13_xiy4b")
+volume_db = -2.5
+autoplay = true
+
+[node name="player" parent="." instance=ExtResource("12_426bc")]
+
+[connection signal="pressed" from="stats/strength/minus" to="." method="strength_minus"]
+[connection signal="pressed" from="stats/strength/plus" to="." method="strength_plus"]
+[connection signal="pressed" from="stats/intelligence/minus" to="." method="intelligence_minus"]
+[connection signal="pressed" from="stats/intelligence/plus" to="." method="intelligence_plus"]
+[connection signal="pressed" from="stats/aim/minus" to="." method="aim_minus"]
+[connection signal="pressed" from="stats/aim/plus" to="." method="aim_plus"]
+[connection signal="pressed" from="stats/agility/minus" to="." method="agility_minus"]
+[connection signal="pressed" from="stats/agility/plus" to="." method="agility_plus"]
+[connection signal="pressed" from="stats/health/minus" to="." method="health_minus"]
+[connection signal="pressed" from="stats/health/plus" to="." method="health_plus"]
+[connection signal="pressed" from="stats/confirm" to="." method="_on_confirm_pressed"]

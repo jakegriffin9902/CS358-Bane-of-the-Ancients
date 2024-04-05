@@ -15,15 +15,13 @@ var aim_add = 0
 var agility_add = 0
 var health_add = 0
 
-var format = "[color=black]"
-
 func _ready():
-	available_points.set_text(format + str(player_points))
-	strength.set_text(format + str(player.get("strength")))
-	agility.set_text(format + str(player.get("agility")))
-	intelligence.set_text(format + str(player.get("intelligence")))
-	aim.set_text(format + str(player.get("aim")))
-	health.set_text(format + str(player.get("maxHealth")))
+	available_points.set_text(str(player_points))
+	strength.set_text(str(player.get("strength")))
+	agility.set_text(str(player.get("agility")))
+	intelligence.set_text(str(player.get("intelligence")))
+	aim.set_text(str(player.get("aim")))
+	health.set_text(str(player.get("maxHealth")))
 
 # Enables all plus buttons if there are ponts to spend, and disables otherwise
 func update_plus_restriction(points):
@@ -42,7 +40,8 @@ func update_minus_restriction(button, stat_add):
 		button.set_disabled(false)
 
 func _on_confirm_pressed():
-	player.set("strength", player.get("strength") + strength_add)
+	player.strength += strength_add
+	print(player.strength)
 	player.set("agility", player.get("agility") + agility_add)
 	player.set("intelligence", player.get("intelligence") + intelligence_add)
 	player.set("aim", player.get("aim") + aim_add)
@@ -51,70 +50,78 @@ func _on_confirm_pressed():
 
 func decrease_available_points():
 	player_points -= 1
-	available_points.set_text(format + str(player_points))
+	available_points.set_text(str(player_points))
 	update_plus_restriction(player_points)
+	update_confirm()
 
 func increase_available_points():
 	player_points += 1
-	available_points.set_text(format + str(player_points))
+	available_points.set_text(str(player_points))
 	update_plus_restriction(player_points)
+	update_confirm()
+
+func update_confirm():
+	if (player_points > 0):
+		get_node("stats/confirm").set_disabled(true)
+	else:
+		get_node("stats/confirm").set_disabled(false)
 
 func strength_minus():
 	strength_add -= 1
-	strength.set_text(format + str(strength_add + player.get("strength")))
+	strength.set_text(str(strength_add + player.get("strength")))
 	increase_available_points()
 	update_minus_restriction(get_node("stats/strength/minus"), strength_add)
 
 func strength_plus():
 	strength_add += 1
-	strength.set_text(format + str(strength_add + player.get("strength")))
+	strength.set_text(str(strength_add + player.get("strength")))
 	decrease_available_points()
 	update_minus_restriction(get_node("stats/strength/minus"), strength_add)
 
 func intelligence_minus():
 	intelligence_add -= 1
-	intelligence.set_text(format + str(intelligence_add + player.get("intelligence")))
+	intelligence.set_text(str(intelligence_add + player.get("intelligence")))
 	increase_available_points()
 	update_minus_restriction(get_node("stats/intelligence/minus"), intelligence_add)
 
 func intelligence_plus():
 	intelligence_add += 1
-	intelligence.set_text(format + str(intelligence_add + player.get("intelligence")))
+	intelligence.set_text(str(intelligence_add + player.get("intelligence")))
 	decrease_available_points()
 	update_minus_restriction(get_node("stats/intelligence/minus"), intelligence_add)
 
 func aim_minus():
 	aim_add -= 1
-	aim.set_text(format + str(aim_add + player.get("aim")))
+	aim.set_text(str(aim_add + player.get("aim")))
 	increase_available_points()
 	update_minus_restriction(get_node("stats/aim/minus"), aim_add)
 
 func aim_plus():
 	aim_add += 1
-	aim.set_text(format + str(aim_add + player.get("aim")))
+	aim.set_text(str(aim_add + player.get("aim")))
 	decrease_available_points()
 	update_minus_restriction(get_node("stats/aim/minus"), aim_add)
 
 func agility_minus():
 	agility_add -= 1
-	agility.set_text(format + str(agility_add + player.get("agility")))
+	agility.set_text(str(agility_add + player.get("agility")))
 	increase_available_points()
 	update_minus_restriction(get_node("stats/agility/minus"), agility_add)
 
 func agility_plus():
 	agility_add += 1
-	agility.set_text(format + str(agility_add + player.get("agility")))
+	agility.set_text(str(agility_add + player.get("agility")))
 	decrease_available_points()
 	update_minus_restriction(get_node("stats/agility/minus"), agility_add)
 
 func health_minus():
 	health_add -= 1
-	health.set_text(format + str(health_add + player.get("maxHealth")))
+	health.set_text(str(health_add + player.get("maxHealth")))
 	increase_available_points()
 	update_minus_restriction(get_node("stats/health/minus"), health_add)
 
 func health_plus():
 	health_add += 1
-	health.set_text(format + str(health_add + player.get("maxHealth")))
+	health.set_text(str(health_add + player.get("maxHealth")))
 	decrease_available_points()
 	update_minus_restriction(get_node("stats/health/minus"), health_add)

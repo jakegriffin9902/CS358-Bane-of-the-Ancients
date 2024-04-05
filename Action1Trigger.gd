@@ -43,7 +43,7 @@ func _on_yes_pressed():
 	await get_tree().create_timer(3.0).timeout
 	
 	get_node("CanvasLayer").set_visible(false)
-	get_tree().change_scene_to_file("res://battletest.tscn")
+	get_tree().change_scene_to_file("res://scenes/combat.tscn")
 
 func _on_no_pressed():
 	get_node("CanvasLayer/vbox/text").set_text(
