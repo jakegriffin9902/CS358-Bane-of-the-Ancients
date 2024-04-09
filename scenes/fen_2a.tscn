@@ -1,5 +1,6 @@
-[gd_scene load_steps=14 format=3 uid="uid://dmud382r015al"]
+[gd_scene load_steps=15 format=3 uid="uid://dmud382r015al"]
 
+[ext_resource type="Script" path="res://scenes/fen_2a.gd" id="1_2v8e0"]
 [ext_resource type="PackedScene" uid="uid://bwjh30l734fb1" path="res://characters/player.tscn" id="1_y3p7e"]
 [ext_resource type="Texture2D" uid="uid://b3u57jb4rqic" path="res://ui_art/HeartIcon.png" id="2_8ti3j"]
 [ext_resource type="Script" path="res://HeartUI.gd" id="3_5eg1i"]
@@ -321,6 +322,7 @@ sources/5 = SubResource("TileSetAtlasSource_vkqk7")
 
 [node name="Slouismo Fen Entrance" type="Node2D"]
 y_sort_enabled = true
+script = ExtResource("1_2v8e0")
 
 [node name="TileMap" type="TileMap" parent="."]
 y_sort_enabled = true

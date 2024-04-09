@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" path="res://battle.gd" id="1_3mavc"]
 [ext_resource type="Texture2D" uid="uid://c4fohm5t1agbo" path="res://ui_art/skull.jpg" id="2_otdd7"]
-[ext_resource type="Texture2D" uid="uid://cae2jwu0i2yc3" path="res://ui_art/backgriund.jpg" id="3_3eipt"]
+[ext_resource type="Texture2D" uid="uid://ca0rub7w2eam6" path="res://ui_art/combat_background.png" id="2_toaiu"]
 [ext_resource type="FontFile" uid="uid://cxlsfsc08gv5l" path="res://ui_art/Pixel_NES.otf" id="3_xufrg"]
 [ext_resource type="Texture2D" uid="uid://dvkjebme5p13h" path="res://ui_art/button.png" id="6_vg5ay"]
 [ext_resource type="Texture2D" uid="uid://dhip4nygb7qoy" path="res://ui_art/button_selected.png" id="7_qm2cy"]
@@ -138,9 +138,11 @@ layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
+offset_top = -330.0
+offset_bottom = -170.0
 grow_horizontal = 2
 grow_vertical = 2
-texture = ExtResource("3_3eipt")
+texture = ExtResource("2_toaiu")
 
 [node name="EnemyContainer" type="VBoxContainer" parent="."]
 layout_mode = 1
