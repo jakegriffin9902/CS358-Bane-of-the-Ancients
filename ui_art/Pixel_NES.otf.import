@@ -3,12 +3,12 @@
 importer="font_data_dynamic"
 type="FontFile"
 uid="uid://cxlsfsc08gv5l"
-path="res://.godot/imported/Pixel_NES.otf-9ce93efc530686f4d7a6b90832a4ce01.fontdata"
+path="res://.godot/imported/Pixel_NES.otf-8a880a0fa978cf86a4124e18d4a3f402.fontdata"
 
 [deps]
 
-source_file="res://Pixel_NES.otf"
-dest_files=["res://.godot/imported/Pixel_NES.otf-9ce93efc530686f4d7a6b90832a4ce01.fontdata"]
+source_file="res://ui_art/Pixel_NES.otf"
+dest_files=["res://.godot/imported/Pixel_NES.otf-8a880a0fa978cf86a4124e18d4a3f402.fontdata"]
 
 [params]
 

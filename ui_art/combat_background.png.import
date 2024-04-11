@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cae2jwu0i2yc3"
-path="res://.godot/imported/backgriund.jpg-dfe681468c19d0963532c9f030b915b3.ctex"
+uid="uid://ca0rub7w2eam6"
+path="res://.godot/imported/combat_background.png-b1bcb7aee5048bc33d5c88d09122b0d0.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://backgriund.jpg"
-dest_files=["res://.godot/imported/backgriund.jpg-dfe681468c19d0963532c9f030b915b3.ctex"]
+source_file="res://ui_art/combat_background.png"
+dest_files=["res://.godot/imported/combat_background.png-b1bcb7aee5048bc33d5c88d09122b0d0.ctex"]
 
 [params]
 
