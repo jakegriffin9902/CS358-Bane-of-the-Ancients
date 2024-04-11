@@ -9,7 +9,7 @@ func _on_body_entered(_body):
 	
 func Action1Trigger():
 	count_touch_action1 += 1
-	if count_touch_action1 != 1:
+	if count_touch_action1 != 1 and touch_action1 == false:
 		touch_action1 = true
 		print(get_tree())
 		can_move = false
