@@ -18,6 +18,8 @@ func _ready():
 	current_player_health=get_node("player").curHealth
 	current_enemy_health=enemy.health
 	await textbox_closed
+	if(enemy.agility>get_node("player").agility):
+		enemy_turn()
 	$Actions.show()
 func set_health(progress_bar,health,max_health):
 	progress_bar.value=health

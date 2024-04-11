@@ -7,7 +7,7 @@ extends CharacterBody2D
 @onready var animation_tree = $AnimationTree
 
 @export var strength = 1
-var agility = 1
+var agility = 0
 var intelligence = 1
 var aim = 1
 var maxHealth = 10

@@ -1,4 +1,4 @@
-[gd_scene load_steps=28 format=3 uid="uid://b512usxxkschk"]
+[gd_scene load_steps=29 format=3 uid="uid://b512usxxkschk"]
 
 [ext_resource type="Script" path="res://battle.gd" id="1_3mavc"]
 [ext_resource type="Texture2D" uid="uid://c4fohm5t1agbo" path="res://ui_art/skull.jpg" id="2_otdd7"]
@@ -10,6 +10,7 @@
 [ext_resource type="PackedScene" uid="uid://bwjh30l734fb1" path="res://characters/player.tscn" id="9_3ogoo"]
 [ext_resource type="Script" path="res://zombie.gd" id="10_7k72g"]
 [ext_resource type="AudioStream" uid="uid://c6isbhikk3fuf" path="res://music/danger.wav" id="10_8fgq4"]
+[ext_resource type="Texture2D" uid="uid://c80idkf2s8rda" path="res://characters/art/carrier_human_combat1.png" id="10_11a7v"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_vylep"]
 bg_color = Color(0.917647, 0, 0.129412, 1)
@@ -330,6 +331,7 @@ visible = false
 
 [node name="zombie" type="CharacterBody2D" parent="."]
 script = ExtResource("10_7k72g")
+texture = ExtResource("10_11a7v")
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("10_8fgq4")
