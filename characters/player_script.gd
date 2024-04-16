@@ -34,12 +34,8 @@ func update_animation_parameters(move_input : Vector2):
 			animation_tree.set("parameters/Move/blend_position", move_input)
 
 
-func _on_exit_north_body_entered(_body):
+func _on_exit_entered(_body):
 	get_tree().change_scene_to_file("res://scenes/stat_sheet.tscn")
-
-
-func _on_exit_south_body_entered(_body):
-	get_tree().change_scene_to_file("res://fen_2b.tscn")
 
 func _get(property):
 	return property

@@ -355,6 +355,7 @@ volume_db = -2.5
 autoplay = true
 
 [node name="player" parent="." instance=ExtResource("12_426bc")]
+visible = false
 
 [connection signal="pressed" from="stats/strength/minus" to="." method="strength_minus"]
 [connection signal="pressed" from="stats/strength/plus" to="." method="strength_plus"]

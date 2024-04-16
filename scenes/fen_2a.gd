@@ -7,3 +7,7 @@ func update_stats(strength, intelligence, aim, agility, health):
 	get_node("Player").agility = agility
 	get_node("Player").maxHealth = health
 	get_node("Player").curHealth = health
+
+
+func _on_exit_2_entered(_body):
+	get_tree().change_scene_to_file("res://scenes/end.tscn")
