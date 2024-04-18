@@ -4,8 +4,9 @@ func _physics_process(_delta):
 	updateHeart()
 
 func updateHeart():
-	value=get_node("../..").curHealth
-	if (get_node("../..").curHealth>=10):
-		get_node("HeartUIText").text=str(get_node("../..").curHealth)
+	# This isn't great code, but works for now. It keeps the heart artwork full.
+	value = PlayerStats.maxHealth
+	if (PlayerStats.curHealth >= 10):
+		get_node("HeartUIText").text=str(PlayerStats.curHealth)
 	else :
-		get_node("HeartUIText2").text=str(get_node("../..").curHealth)
+		get_node("HeartUIText2").text=str(PlayerStats.curHealth)
