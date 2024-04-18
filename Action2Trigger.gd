@@ -1,21 +1,21 @@
 extends Area2D
 
-@export var touch_action1 : bool = false
-@export var count_touch_action1 : float = 0
+@export var touch_action2 : bool = false
+@export var count_touch_action2 : float = 0
 @export var can_move: bool
 
 func _on_body_entered(_body):
-	Action1Trigger()
+	Action2Trigger()
 	
-func Action1Trigger():
-	count_touch_action1 += 1
-	if count_touch_action1 != 1 and touch_action1 == false:
-		touch_action1 = true
+func Action2Trigger():
+	count_touch_action2 += 1
+	if count_touch_action2 != 1 and touch_action2 == false:
+		touch_action2 = true
 		print(get_tree())
 		can_move = false
+		# to fix
 		get_node("CanvasLayer").set_visible(true)
-		get_node("CanvasLayer/vbox/text").set_text("You spot two wounded creatures
-		nearby. Do you wish to help?")
+		get_node("CanvasLayer/vbox/text").set_text("sample text")
 		get_parent().get_node("Player").set("can_move", false)
 
 func _on_yes_pressed():
@@ -32,16 +32,6 @@ func _on_yes_pressed():
 		"They begin to succumb
 		to their wounds and turn
 		aggressive.")
-		
-	await get_tree().create_timer(3.0).timeout
-	
-	get_parent().get_node("Human carrier/Sprite2D").set_frame(1)
-	get_parent().get_node("Animal carrier/Sprite2D").set_frame(1)
-	await get_tree().create_timer(0.5).timeout
-	
-	get_parent().get_node("Human carrier/Sprite2D").set_frame(2)
-	get_parent().get_node("Animal carrier/Sprite2D").set_frame(2)
-	await get_tree().create_timer(3.0).timeout
 	
 	get_node("CanvasLayer").set_visible(false)
 	get_tree().change_scene_to_file("res://scenes/combat.tscn")
@@ -55,18 +45,6 @@ func _on_no_pressed():
 	get_node("CanvasLayer/vbox/hbox/no").set_visible(false)
 	get_node("CanvasLayer/vbox/hbox/yes").set_visible(false)
 		
-	await get_tree().create_timer(2.0).timeout
-	
-	get_parent().get_node("Human carrier/Sprite2D").set_frame(1)
-	get_parent().get_node("Animal carrier/Sprite2D").set_frame(1)
-	await get_tree().create_timer(0.5).timeout
-	
-	get_parent().get_node("Human carrier/Sprite2D").set_frame(2)
-	get_parent().get_node("Animal carrier/Sprite2D").set_frame(2)
-	await get_tree().create_timer(0.5).timeout
-	
-	get_parent().get_node("Human carrier/Sprite2D").set_frame(5)
-	get_parent().get_node("Animal carrier/Sprite2D").set_frame(5)
 	await get_tree().create_timer(2.0).timeout
 
 	get_node("CanvasLayer/vbox/hbox/ok").set_visible(true)

@@ -39,3 +39,14 @@ func _on_exit_entered(_body):
 
 func _get(property):
 	return property
+
+
+func _on_chest_body_entered(body):
+	var chest = get_parent().get_node("Chest")
+	if chest._get("activated"):
+		if intelligence > -1:
+			print("you get epic stuff")
+			chest._set_activation()
+			
+		else: print("you got it already")
+	else: print("no stuff for you :(")

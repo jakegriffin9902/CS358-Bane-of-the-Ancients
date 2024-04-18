@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=3 uid="uid://dmud382r015al"]
+[gd_scene load_steps=29 format=3 uid="uid://dmud382r015al"]
 
 [ext_resource type="Script" path="res://scenes/fen_2a.gd" id="1_2v8e0"]
 [ext_resource type="PackedScene" uid="uid://bwjh30l734fb1" path="res://characters/player.tscn" id="1_y3p7e"]
@@ -10,6 +10,11 @@
 [ext_resource type="Texture2D" uid="uid://c3slqm68eafop" path="res://tile_sets/gronuds.png" id="8_kialu"]
 [ext_resource type="AudioStream" uid="uid://cdt24uquqdct4" path="res://music/into_the_fen.wav" id="9_orwrw"]
 [ext_resource type="PackedScene" uid="uid://di2538cf7gy23" path="res://scenes/portal.tscn" id="10_gduyr"]
+[ext_resource type="Texture2D" uid="uid://bk8p0xa15mabm" path="res://characters/art/fen_gator.png" id="11_x0i5n"]
+[ext_resource type="Script" path="res://Action2Trigger.gd" id="12_gp0aw"]
+[ext_resource type="Texture2D" uid="uid://cggvtp7f5c5c3" path="res://tile_sets/chest.png" id="12_ka82c"]
+[ext_resource type="FontFile" uid="uid://cxlsfsc08gv5l" path="res://ui_art/Pixel_NES.otf" id="13_aqxqe"]
+[ext_resource type="Script" path="res://scenes/chest.gd" id="14_v4h8h"]
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_mhu23"]
 
@@ -363,6 +368,54 @@ sources/4 = SubResource("TileSetAtlasSource_fya7p")
 sources/5 = SubResource("TileSetAtlasSource_vkqk7")
 sources/0 = SubResource("TileSetAtlasSource_wj7xe")
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_co02p"]
+size = Vector2(49, 15)
+
+[sub_resource type="SegmentShape2D" id="SegmentShape2D_25ymq"]
+a = Vector2(334, 78)
+b = Vector2(277, 170)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ssfkr"]
+content_margin_left = 4.0
+content_margin_top = 2.0
+content_margin_right = 4.0
+content_margin_bottom = 2.0
+bg_color = Color(0, 0, 0, 1)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color(1, 1, 1, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_2lei8"]
+content_margin_left = 4.0
+content_margin_top = 2.0
+content_margin_right = 4.0
+content_margin_bottom = 2.0
+bg_color = Color(0.117647, 0.117647, 0.117647, 1)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color(1, 1, 1, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_eg0ky"]
+content_margin_left = 4.0
+content_margin_top = 2.0
+content_margin_right = 4.0
+content_margin_bottom = 2.0
+bg_color = Color(0.890196, 0.890196, 0.890196, 1)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color(1, 1, 1, 1)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_y306k"]
+size = Vector2(15, 13)
+
+[sub_resource type="GDScript" id="GDScript_41o3r"]
+
 [node name="Slouismo Fen Entrance" type="Node2D"]
 y_sort_enabled = true
 script = ExtResource("1_2v8e0")
@@ -472,4 +525,92 @@ scale = Vector2(0.5, 0.5)
 scroll_active = false
 metadata/_edit_use_anchors_ = true
 
+[node name="Gator" type="CharacterBody2D" parent="."]
+y_sort_enabled = true
+position = Vector2(9, 293)
+
+[node name="Sprite2D" type="Sprite2D" parent="Gator"]
+position = Vector2(344, -185)
+texture = ExtResource("11_x0i5n")
+vframes = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Gator"]
+position = Vector2(343, -185)
+shape = SubResource("RectangleShape2D_co02p")
+
+[node name="2_assist_interaction" type="Area2D" parent="."]
+script = ExtResource("12_gp0aw")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="2_assist_interaction"]
+shape = SubResource("SegmentShape2D_25ymq")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="2_assist_interaction"]
+visible = false
+
+[node name="background" type="ColorRect" parent="2_assist_interaction/CanvasLayer"]
+offset_left = -4.0
+offset_top = 233.0
+offset_right = 405.0
+offset_bottom = 326.0
+color = Color(0, 0, 0, 1)
+
+[node name="vbox" type="VBoxContainer" parent="2_assist_interaction/CanvasLayer"]
+offset_left = 9.0
+offset_top = 234.0
+offset_right = 49.0
+offset_bottom = 274.0
+
+[node name="text" type="Label" parent="2_assist_interaction/CanvasLayer/vbox"]
+custom_minimum_size = Vector2(500, 2.08165e-12)
+layout_mode = 2
+theme_override_fonts/font = ExtResource("13_aqxqe")
+text = "Sample text."
+autowrap_mode = 2
+
+[node name="hbox" type="HBoxContainer" parent="2_assist_interaction/CanvasLayer/vbox"]
+layout_mode = 2
+
+[node name="yes" type="Button" parent="2_assist_interaction/CanvasLayer/vbox/hbox"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("13_aqxqe")
+theme_override_styles/normal = SubResource("StyleBoxFlat_ssfkr")
+theme_override_styles/hover = SubResource("StyleBoxFlat_2lei8")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_eg0ky")
+text = "Yes"
+
+[node name="no" type="Button" parent="2_assist_interaction/CanvasLayer/vbox/hbox"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("13_aqxqe")
+theme_override_styles/normal = SubResource("StyleBoxFlat_ssfkr")
+theme_override_styles/hover = SubResource("StyleBoxFlat_2lei8")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_eg0ky")
+text = "No"
+
+[node name="ok" type="Button" parent="2_assist_interaction/CanvasLayer/vbox/hbox"]
+visible = false
+layout_mode = 2
+theme_override_fonts/font = ExtResource("13_aqxqe")
+theme_override_styles/normal = SubResource("StyleBoxFlat_ssfkr")
+theme_override_styles/hover = SubResource("StyleBoxFlat_2lei8")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_eg0ky")
+text = "OK"
+
+[node name="Chest" type="Area2D" parent="."]
+script = ExtResource("14_v4h8h")
+
+[node name="Sprite2D" type="Sprite2D" parent="Chest"]
+position = Vector2(72, 39)
+texture = ExtResource("12_ka82c")
+hframes = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Chest"]
+position = Vector2(72, 40)
+shape = SubResource("RectangleShape2D_y306k")
+script = SubResource("GDScript_41o3r")
+
 [connection signal="body_entered" from="exit" to="." method="_on_exit_2_entered"]
+[connection signal="body_entered" from="2_assist_interaction" to="2_assist_interaction" method="_on_body_entered"]
+[connection signal="pressed" from="2_assist_interaction/CanvasLayer/vbox/hbox/yes" to="2_assist_interaction" method="_on_yes_pressed"]
+[connection signal="pressed" from="2_assist_interaction/CanvasLayer/vbox/hbox/no" to="2_assist_interaction" method="_on_no_pressed"]
+[connection signal="pressed" from="2_assist_interaction/CanvasLayer/vbox/hbox/ok" to="2_assist_interaction" method="_on_ok_pressed"]
+[connection signal="body_entered" from="Chest" to="Player" method="_on_chest_body_entered"]
