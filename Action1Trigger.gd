@@ -21,7 +21,7 @@ func Action1Trigger():
 func _on_yes_pressed():
 	get_parent().get_node("Player").position = Vector2(180, 160)
 	
-	get_node("CanvasLayer/vbox/text").set_text("You approach the creatures.")
+	get_node("CanvasLayer/vbox/text").set_text("You approach the creatures...")
 	get_node("CanvasLayer/vbox/hbox/no").set_visible(false)
 	get_node("CanvasLayer/vbox/hbox/yes").set_visible(false)
 	get_node("CanvasLayer/vbox/hbox/ok").set_visible(false)	
@@ -29,11 +29,11 @@ func _on_yes_pressed():
 	await get_tree().create_timer(3.0).timeout
 	
 	get_node("CanvasLayer/vbox/text").set_text(
-		"They begin to succumb
-		to their wounds and turn
-		aggressive.")
-		
-	await get_tree().create_timer(3.0).timeout
+		"They suddenly begin choking
+		as a vicious disease devours
+		them from within.")
+	
+	await get_tree().create_timer(4.0).timeout
 	
 	get_parent().get_node("Human carrier/Sprite2D").set_frame(1)
 	get_parent().get_node("Animal carrier/Sprite2D").set_frame(1)
@@ -41,6 +41,11 @@ func _on_yes_pressed():
 	
 	get_parent().get_node("Human carrier/Sprite2D").set_frame(2)
 	get_parent().get_node("Animal carrier/Sprite2D").set_frame(2)
+	await get_tree().create_timer(0.5).timeout
+	
+	get_node("CanvasLayer/vbox/text").set_text(
+		"They rush toward you!")
+	
 	await get_tree().create_timer(3.0).timeout
 	
 	get_node("CanvasLayer").set_visible(false)
