@@ -13,7 +13,7 @@ config_version=5
 config/name="Bane of the Ancients"
 run/main_scene="res://scenes/title.tscn"
 config/features=PackedStringArray("4.2", "Forward Plus")
-config/icon="res://icon.svg"
+config/icon="res://ui_art/icon.png"
 
 [autoload]
 
@@ -23,7 +23,7 @@ PlayerStats="*res://PlayerStats.tscn"
 
 window/size/viewport_width=1600
 window/size/viewport_height=1280
-window/size/resizable=false
+window/stretch/mode="canvas_items"
 window/stretch/scale=4.0
 
 [input]
