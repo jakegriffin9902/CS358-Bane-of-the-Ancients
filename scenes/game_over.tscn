@@ -1,0 +1,22 @@
+[gd_scene load_steps=3 format=3 uid="uid://bg8qeqqfjvk7q"]
+
+[ext_resource type="Texture2D" uid="uid://e6k3hobbq8ay" path="res://ui_art/game_over.png" id="1_no8up"]
+[ext_resource type="AudioStream" uid="uid://lg56ydrgoqlu" path="res://music/death.wav" id="1_s16qs"]
+
+[node name="Control" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="TextureRect" type="TextureRect" parent="."]
+layout_mode = 0
+offset_right = 400.0
+offset_bottom = 332.0
+texture = ExtResource("1_no8up")
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("1_s16qs")
+autoplay = true
