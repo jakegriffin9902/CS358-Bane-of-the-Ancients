@@ -3,6 +3,7 @@ extends CharacterBody2D
 @export var can_move : bool = true
 @export var move_speed : float = 45
 @export var starting_direction : Vector2 = Vector2(0,1)
+@export var treasures_collected : Array = [false]
 
 @onready var animation_tree = $AnimationTree
 
@@ -41,12 +42,38 @@ func _get(property):
 	return property
 
 
-func _on_chest_body_entered(body):
-	var chest = get_parent().get_node("Chest")
-	if chest._get("activated"):
-		if intelligence > -1:
-			print("you get epic stuff")
-			chest._set_activation()
+func _on_chest_body_entered(_body):
+	if not treasures_collected[0]:
+		if PlayerStats.intelligence > 1:
+			get_parent().get_node("Player").set("can_move", false)
 			
-		else: print("you got it already")
-	else: print("no stuff for you :(")
+			get_parent().get_node("Chest_CanvasLayer").set_visible(true)
+			get_parent().get_node("Chest_CanvasLayer/vbox/hbox/no").set_visible(false)
+			get_parent().get_node("Chest_CanvasLayer/vbox/hbox/yes").set_visible(false)
+			get_parent().get_node("Chest_CanvasLayer/vbox/hbox/ok").set_visible(false)	
+			get_parent().get_node("Chest_CanvasLayer/vbox/text").set_text("You figure out how
+			to pick the lock.")
+			await get_tree().create_timer(3.0).timeout
+			
+			get_parent().get_node("Chest_CanvasLayer/vbox/text").set_text("You find a
+			health boost inside!")
+			PlayerStats.curHealth += 2 * PlayerStats.intelligence
+			treasures_collected[0] = true
+			get_parent().get_node("Chest/Sprite2D").set_frame(1)
+			await get_tree().create_timer(3.0).timeout
+			
+			get_parent().get_node("Chest_CanvasLayer").set_visible(false)
+			get_parent().get_node("Player").set("can_move", true)
+		else:
+			get_parent().get_node("Chest_CanvasLayer").set_visible(true)
+			get_parent().get_node("Chest_CanvasLayer/vbox/hbox/no").set_visible(false)
+			get_parent().get_node("Chest_CanvasLayer/vbox/hbox/yes").set_visible(false)
+			get_parent().get_node("Chest_CanvasLayer/vbox/hbox/ok").set_visible(false)	
+			get_parent().get_node("Player").set("can_move", false)
+			treasures_collected[0] = true
+			
+			get_parent().get_node("Chest_CanvasLayer/vbox/text").set_text("The chest is locked.")
+			await get_tree().create_timer(3.0).timeout
+			
+			get_parent().get_node("Chest_CanvasLayer").set_visible(false)
+			get_parent().get_node("Player").set("can_move", true)
