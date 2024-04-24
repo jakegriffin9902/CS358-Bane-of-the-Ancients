@@ -29,4 +29,5 @@ func Action2Trigger():
 		await get_tree().create_timer(3.0).timeout
 		
 		get_node("CanvasLayer").set_visible(false)
+		Global.combat_completed=1
 		get_tree().change_scene_to_file("res://scenes/combat.tscn")

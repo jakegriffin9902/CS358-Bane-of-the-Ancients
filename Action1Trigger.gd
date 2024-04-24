@@ -3,6 +3,7 @@ extends Area2D
 @export var touch_action1 : bool = false
 @export var count_touch_action1 : float = 0
 @export var can_move: bool
+var location: Vector2
 
 func _on_body_entered(_body):
 	Action1Trigger()
@@ -49,6 +50,7 @@ func _on_yes_pressed():
 	await get_tree().create_timer(3.0).timeout
 	
 	get_node("CanvasLayer").set_visible(false)
+	Global.combat_completed=1
 	get_tree().change_scene_to_file("res://scenes/combat.tscn")
 
 func _on_no_pressed():
