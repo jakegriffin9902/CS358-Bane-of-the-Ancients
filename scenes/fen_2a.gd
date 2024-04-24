@@ -3,6 +3,7 @@ extends Node2D
 func _ready():
 	Global.level=2
 	if(Global.combat_completed==1):
+		PlayerStats.curHealth=Global.healthChange
 		get_node("Player").position = Vector2(300, 100)
 func update_stats(strength, intelligence, aim, agility, health):
 	get_node("Player").strength = strength
