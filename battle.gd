@@ -12,7 +12,7 @@ func _ready():
 	if(Global.level==2):
 		enemy=get_node("gator")
 	set_health($EnemyContainer/ProgressBar, enemy.health,enemy.health)
-	set_health($PlayerPanel/HBoxContainer/ProgressBar, get_node("player").curHealth, get_node("player").maxHealth)
+	set_health($PlayerPanel/HBoxContainer/ProgressBar, PlayerStats.curHealth, PlayerStats.maxHealth)
 	$EnemyContainer/Enemy.texture=enemy.texture
 	$Textbox.hide()
 	$Actions.hide()
@@ -20,10 +20,10 @@ func _ready():
 		display_text("The pair attack!")
 	else:
 		display_text("The Gator charges!")
-	current_player_health=get_node("player").curHealth
+	current_player_health=PlayerStats.curHealth
 	current_enemy_health=enemy.health
 	await textbox_closed
-	if(enemy.agility>get_node("player").agility):
+	if(enemy.agility>PlayerStats.agility):
 		enemy_turn()
 	$Actions.show()
 func set_health(progress_bar,health,max_health):
@@ -51,7 +51,7 @@ func enemy_turn():
 		current_player_health-=1
 		if(current_player_health<=0):
 			display_text("You die...")
-			await("textbox_closed")
+			await textbox_closed
 			get_tree().change_scene_to_file("res://scenes/game_over.tscn")
 		isdefending=false
 	else:
@@ -72,12 +72,12 @@ func _on_attack_pressed():
 	await "animation_finished"
 	if(current_player_health<=0):
 		display_text("You die...")
-		await("textbox_closed")
+		await textbox_closed
 		get_tree().change_scene_to_file("res://scenes/game_over.tscn")
 	elif(current_enemy_health<=0):
 		Global.healthChange=current_player_health
 		display_text("You Win!")
-		await("textbox_closed")
+		await textbox_closed
 		if(Global.level==1):
 			get_tree().change_scene_to_file("res://scenes/fen_1.tscn")
 		else:

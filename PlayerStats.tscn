@@ -7,8 +7,8 @@ script/source = "extends Node
 @export var agility = 0
 @export var intelligence = 1
 @export var aim = 1
-@export var maxHealth = 10
-@export var curHealth = 10
+@export var maxHealth = 11
+@export var curHealth = 9
 "
 
 [node name="Node" type="Node"]
