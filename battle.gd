@@ -26,10 +26,12 @@ func _ready():
 	if(enemy.agility>PlayerStats.agility):
 		enemy_turn()
 	$Actions.show()
+
 func set_health(progress_bar,health,max_health):
 	progress_bar.value=health
 	progress_bar.max_value=max_health
 	progress_bar.get_node("Label").text="HP:%d/%d"%[health,max_health]
+
 func _input(_event):
 	if (Input.is_action_just_pressed("ui_accept") or Input.is_mouse_button_pressed(MOUSE_BUTTON_LEFT)) and $Textbox.visible:
 		$Textbox.hide()
@@ -38,7 +40,7 @@ func _input(_event):
 func display_text(text):
 	$Textbox.show()
 	$Textbox/Label.text =text
-	
+
 func enemy_turn():
 	if(Global.level==1):
 		display_text("The zombies bite at you!")
@@ -49,19 +51,14 @@ func enemy_turn():
 		display_text("You block the attack!")
 		await textbox_closed
 		current_player_health-=1
-		if(current_player_health<=0):
-			display_text("You die...")
-			await textbox_closed
-			get_tree().change_scene_to_file("res://scenes/game_over.tscn")
 		isdefending=false
 	else:
 		current_player_health=max(0,current_player_health-int(rng.randf_range(1, enemy.damage)))
-
-	set_health($PlayerPanel/HBoxContainer/ProgressBar,current_player_health,get_node("player").maxHealth)
-
-		
-
-
+	set_health($PlayerPanel/HBoxContainer/ProgressBar,current_player_health,PlayerStats.maxHealth)
+	if(current_player_health<=0):
+			display_text("You die...")
+			await textbox_closed
+			get_tree().change_scene_to_file("res://scenes/game_over.tscn")
 
 func _on_attack_pressed():
 	display_text("You swing your sword!")
@@ -69,7 +66,6 @@ func _on_attack_pressed():
 	current_enemy_health=max(0,current_enemy_health-(get_node("player").strength+int(rng.randf_range(0, 4))))
 	set_health($EnemyContainer/ProgressBar,current_enemy_health,enemy.health)
 	$AnimationPlayer.play("enemy_hit")
-	await "animation_finished"
 	if(current_player_health<=0):
 		display_text("You die...")
 		await textbox_closed

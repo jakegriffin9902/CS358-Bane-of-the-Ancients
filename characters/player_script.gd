@@ -55,9 +55,10 @@ func _on_chest_body_entered(_body):
 			to pick the lock.")
 			await get_tree().create_timer(3.0).timeout
 			
-			get_parent().get_node("Chest_CanvasLayer/vbox/text").set_text("You find a
-			health boost inside!")
-			PlayerStats.curHealth += 2 * PlayerStats.intelligence
+			get_parent().get_node("Chest_CanvasLayer/vbox/text").set_text("Your health
+			has increased and replenished!")
+			PlayerStats.maxHealth += 2 * PlayerStats.intelligence
+			PlayerStats.curHealth = PlayerStats.maxHealth
 			treasures_collected[0] = true
 			get_parent().get_node("Chest/Sprite2D").set_frame(1)
 			await get_tree().create_timer(3.0).timeout

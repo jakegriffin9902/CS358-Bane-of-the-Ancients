@@ -8,5 +8,7 @@ func updateHeart():
 	value = PlayerStats.maxHealth
 	if (PlayerStats.curHealth >= 10):
 		get_node("HeartUIText").text=str(PlayerStats.curHealth)
+		get_node("HeartUIText2").text=""
 	else :
 		get_node("HeartUIText2").text=str(PlayerStats.curHealth)
+		get_node("HeartUIText").text=""
