@@ -532,7 +532,6 @@ position = Vector2(9, 293)
 [node name="Sprite2D" type="Sprite2D" parent="Gator"]
 position = Vector2(344, -185)
 texture = ExtResource("11_x0i5n")
-vframes = 2
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Gator"]
 position = Vector2(343, -185)

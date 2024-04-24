@@ -9,12 +9,17 @@ var isdefending=false
 var rng = RandomNumberGenerator.new()
 # Called when the node enters the scene tree for the first time.
 func _ready():
+	if(Global.level==2):
+		enemy=get_node("gator")
 	set_health($EnemyContainer/ProgressBar, enemy.health,enemy.health)
 	set_health($PlayerPanel/HBoxContainer/ProgressBar, get_node("player").curHealth, get_node("player").maxHealth)
 	$EnemyContainer/Enemy.texture=enemy.texture
 	$Textbox.hide()
 	$Actions.hide()
-	display_text("The pair attack!")
+	if(Global.level==1):
+		display_text("The pair attack!")
+	else:
+		display_text("The Gator charges!")
 	current_player_health=get_node("player").curHealth
 	current_enemy_health=enemy.health
 	await textbox_closed
@@ -35,7 +40,10 @@ func display_text(text):
 	$Textbox/Label.text =text
 	
 func enemy_turn():
-	display_text("The zombies bite at you!")
+	if(Global.level==1):
+		display_text("The zombies bite at you!")
+	else:
+		display_text("The Gator snaps at you!")
 	await textbox_closed
 	if(isdefending):
 		display_text("You block the attack!")
@@ -47,7 +55,7 @@ func enemy_turn():
 			get_tree().change_scene_to_file("res://scenes/game_over.tscn")
 		isdefending=false
 	else:
-		current_player_health=max(0,current_player_health-rng.randf_range(1, enemy.damage))
+		current_player_health=max(0,current_player_health-int(rng.randf_range(1, enemy.damage)))
 
 	set_health($PlayerPanel/HBoxContainer/ProgressBar,current_player_health,get_node("player").maxHealth)
 
@@ -58,7 +66,7 @@ func enemy_turn():
 func _on_attack_pressed():
 	display_text("You swing your sword!")
 	await textbox_closed
-	current_enemy_health=max(0,current_enemy_health-(get_node("player").strength+rng.randf_range(0, 4)))
+	current_enemy_health=max(0,current_enemy_health-(get_node("player").strength+int(rng.randf_range(0, 4))))
 	set_health($EnemyContainer/ProgressBar,current_enemy_health,enemy.health)
 	$AnimationPlayer.play("enemy_hit")
 	await "animation_finished"
@@ -67,9 +75,13 @@ func _on_attack_pressed():
 		await("textbox_closed")
 		get_tree().change_scene_to_file("res://scenes/game_over.tscn")
 	elif(current_enemy_health<=0):
+		Global.healthChange=current_player_health
 		display_text("You Win!")
 		await("textbox_closed")
-		get_tree().change_scene_to_file("res://scenes/fen_1.tscn")
+		if(Global.level==1):
+			get_tree().change_scene_to_file("res://scenes/fen_1.tscn")
+		else:
+			get_tree().change_scene_to_file("res://scenes/end.tscn")
 	enemy_turn()
 
 

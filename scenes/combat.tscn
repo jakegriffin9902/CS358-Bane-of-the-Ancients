@@ -1,4 +1,4 @@
-[gd_scene load_steps=29 format=3 uid="uid://b512usxxkschk"]
+[gd_scene load_steps=27 format=3 uid="uid://b512usxxkschk"]
 
 [ext_resource type="Script" path="res://battle.gd" id="1_3mavc"]
 [ext_resource type="Texture2D" uid="uid://c4fohm5t1agbo" path="res://ui_art/skull.jpg" id="2_otdd7"]
@@ -10,7 +10,8 @@
 [ext_resource type="PackedScene" uid="uid://bwjh30l734fb1" path="res://characters/player.tscn" id="9_3ogoo"]
 [ext_resource type="Script" path="res://zombie.gd" id="10_7k72g"]
 [ext_resource type="AudioStream" uid="uid://c6isbhikk3fuf" path="res://music/danger.wav" id="10_8fgq4"]
-[ext_resource type="Texture2D" uid="uid://c80idkf2s8rda" path="res://characters/art/carrier_human_combat1.png" id="10_11a7v"]
+[ext_resource type="Texture2D" uid="uid://cpwb1rk0qu38b" path="res://characters/art/zombies.png" id="10_o2300"]
+[ext_resource type="Texture2D" uid="uid://dhru7mpgrgxq" path="res://characters/art/fen_gator1.png" id="11_w45ui"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_vylep"]
 bg_color = Color(0.917647, 0, 0.129412, 1)
@@ -58,15 +59,6 @@ texture = ExtResource("6_vg5ay")
 texture = ExtResource("7_qm2cy")
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_1ls2e"]
-texture = ExtResource("8_jpcqw")
-
-[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_luux4"]
-texture = ExtResource("6_vg5ay")
-
-[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_nyedj"]
-texture = ExtResource("7_qm2cy")
-
-[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_iflhk"]
 texture = ExtResource("8_jpcqw")
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_c0lus"]
@@ -144,10 +136,10 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -140.0
-offset_top = -182.5
-offset_right = 140.0
-offset_bottom = 182.5
+offset_left = -240.0
+offset_top = -182.0
+offset_right = 245.0
+offset_bottom = 183.0
 grow_horizontal = 2
 grow_vertical = 2
 
@@ -155,6 +147,7 @@ grow_vertical = 2
 layout_mode = 2
 size_flags_vertical = 3
 texture = ExtResource("2_otdd7")
+expand_mode = 2
 
 [node name="ProgressBar" type="ProgressBar" parent="EnemyContainer"]
 custom_minimum_size = Vector2(20, 25)
@@ -275,21 +268,6 @@ theme_override_styles/pressed = SubResource("StyleBoxTexture_1ls2e")
 text = "Defend
 "
 
-[node name="Run" type="Button" parent="Actions/HBoxContainer"]
-custom_minimum_size = Vector2(500, 0)
-layout_mode = 2
-theme_override_colors/font_color = Color(0, 0, 0, 1)
-theme_override_colors/font_pressed_color = Color(0, 0, 0, 1)
-theme_override_colors/font_hover_color = Color(0, 0, 0, 1)
-theme_override_colors/font_focus_color = Color(0, 0, 0, 1)
-theme_override_fonts/font = ExtResource("3_xufrg")
-theme_override_font_sizes/font_size = 100
-theme_override_styles/normal = SubResource("StyleBoxTexture_luux4")
-theme_override_styles/hover = SubResource("StyleBoxTexture_nyedj")
-theme_override_styles/pressed = SubResource("StyleBoxTexture_iflhk")
-text = "Run
-"
-
 [node name="Textbox" type="Panel" parent="."]
 visible = false
 layout_mode = 1
@@ -331,7 +309,14 @@ visible = false
 
 [node name="zombie" type="CharacterBody2D" parent="."]
 script = ExtResource("10_7k72g")
-texture = ExtResource("10_11a7v")
+texture = ExtResource("10_o2300")
+agility = 0
+
+[node name="gator" type="CharacterBody2D" parent="."]
+script = ExtResource("10_7k72g")
+texture = ExtResource("11_w45ui")
+health = 25
+damage = 5
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("10_8fgq4")
