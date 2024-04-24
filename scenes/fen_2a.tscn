@@ -607,9 +607,63 @@ position = Vector2(72, 40)
 shape = SubResource("RectangleShape2D_y306k")
 script = SubResource("GDScript_41o3r")
 
+[node name="Chest_CanvasLayer" type="CanvasLayer" parent="."]
+visible = false
+
+[node name="background" type="ColorRect" parent="Chest_CanvasLayer"]
+offset_left = -4.0
+offset_top = 233.0
+offset_right = 405.0
+offset_bottom = 326.0
+color = Color(0, 0, 0, 1)
+
+[node name="vbox" type="VBoxContainer" parent="Chest_CanvasLayer"]
+offset_left = 9.0
+offset_top = 234.0
+offset_right = 49.0
+offset_bottom = 274.0
+
+[node name="text" type="Label" parent="Chest_CanvasLayer/vbox"]
+custom_minimum_size = Vector2(500, 2.08165e-12)
+layout_mode = 2
+theme_override_fonts/font = ExtResource("13_aqxqe")
+text = "Sample text."
+autowrap_mode = 2
+
+[node name="hbox" type="HBoxContainer" parent="Chest_CanvasLayer/vbox"]
+layout_mode = 2
+
+[node name="yes" type="Button" parent="Chest_CanvasLayer/vbox/hbox"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("13_aqxqe")
+theme_override_styles/normal = SubResource("StyleBoxFlat_ssfkr")
+theme_override_styles/hover = SubResource("StyleBoxFlat_2lei8")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_eg0ky")
+text = "Yes"
+
+[node name="no" type="Button" parent="Chest_CanvasLayer/vbox/hbox"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("13_aqxqe")
+theme_override_styles/normal = SubResource("StyleBoxFlat_ssfkr")
+theme_override_styles/hover = SubResource("StyleBoxFlat_2lei8")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_eg0ky")
+text = "No"
+
+[node name="ok" type="Button" parent="Chest_CanvasLayer/vbox/hbox"]
+visible = false
+layout_mode = 2
+theme_override_fonts/font = ExtResource("13_aqxqe")
+theme_override_styles/normal = SubResource("StyleBoxFlat_ssfkr")
+theme_override_styles/hover = SubResource("StyleBoxFlat_2lei8")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_eg0ky")
+text = "OK"
+
 [connection signal="body_entered" from="exit" to="." method="_on_exit_2_entered"]
 [connection signal="body_entered" from="2_assist_interaction" to="2_assist_interaction" method="_on_body_entered"]
 [connection signal="pressed" from="2_assist_interaction/CanvasLayer/vbox/hbox/yes" to="2_assist_interaction" method="_on_yes_pressed"]
 [connection signal="pressed" from="2_assist_interaction/CanvasLayer/vbox/hbox/no" to="2_assist_interaction" method="_on_no_pressed"]
 [connection signal="pressed" from="2_assist_interaction/CanvasLayer/vbox/hbox/ok" to="2_assist_interaction" method="_on_ok_pressed"]
 [connection signal="body_entered" from="Chest" to="Player" method="_on_chest_body_entered"]
+[connection signal="pressed" from="Chest_CanvasLayer/vbox/hbox/yes" to="2_assist_interaction" method="_on_yes_pressed"]
+[connection signal="pressed" from="Chest_CanvasLayer/vbox/hbox/no" to="2_assist_interaction" method="_on_no_pressed"]
+[connection signal="pressed" from="Chest_CanvasLayer/vbox/hbox/ok" to="2_assist_interaction" method="_on_ok_pressed"]
