@@ -503,7 +503,6 @@ stream = ExtResource("5_8ryl2")
 autoplay = true
 
 [node name="1_assist_interaction" type="Area2D" parent="."]
-unique_name_in_owner = true
 script = ExtResource("10_lfa1j")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="1_assist_interaction"]

@@ -1,0 +1,17 @@
+[gd_scene load_steps=5 format=3 uid="uid://da6q3h2y20mhd"]
+
+[ext_resource type="Script" path="res://Global.gd" id="1_3d70g"]
+[ext_resource type="PackedScene" uid="uid://b512usxxkschk" path="res://scenes/combat.tscn" id="1_emg8u"]
+[ext_resource type="PackedScene" uid="uid://bd2qkb1x7iclb" path="res://scenes/fen_1.tscn" id="2_sxhxg"]
+[ext_resource type="PackedScene" uid="uid://dmud382r015al" path="res://scenes/fen_2a.tscn" id="3_7rtrp"]
+
+[node name="SceneManager" type="Node"]
+script = ExtResource("1_3d70g")
+
+[node name="Control" parent="." instance=ExtResource("1_emg8u")]
+
+[node name="Slouismo Fen Entrance" parent="." instance=ExtResource("2_sxhxg")]
+scale = Vector2(0.2, 0.2)
+
+[node name="Slouismo Fen Entrance2" parent="." instance=ExtResource("3_7rtrp")]
+scale = Vector2(0.2, 0.2)

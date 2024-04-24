@@ -41,11 +41,17 @@ func enemy_turn():
 		display_text("You block the attack!")
 		await textbox_closed
 		current_player_health-=1
+		if(current_player_health<=0):
+			display_text("You die...")
+			await("textbox_closed")
+			get_tree().change_scene_to_file("res://scenes/game_over.tscn")
 		isdefending=false
 	else:
 		current_player_health=max(0,current_player_health-rng.randf_range(1, enemy.damage))
 
 	set_health($PlayerPanel/HBoxContainer/ProgressBar,current_player_health,get_node("player").maxHealth)
+
+		
 
 
 
@@ -56,6 +62,14 @@ func _on_attack_pressed():
 	set_health($EnemyContainer/ProgressBar,current_enemy_health,enemy.health)
 	$AnimationPlayer.play("enemy_hit")
 	await "animation_finished"
+	if(current_player_health<=0):
+		display_text("You die...")
+		await("textbox_closed")
+		get_tree().change_scene_to_file("res://scenes/game_over.tscn")
+	elif(current_enemy_health<=0):
+		display_text("You Win!")
+		await("textbox_closed")
+		get_tree().change_scene_to_file("res://scenes/fen_1.tscn")
 	enemy_turn()
 
 
