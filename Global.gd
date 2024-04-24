@@ -5,3 +5,5 @@ func _ready():
 
 var player_pos :Vector2
 var combat_completed: int
+var level:int
+var healthChange:int
